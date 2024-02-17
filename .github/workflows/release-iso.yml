@@ -18,7 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Generate ISO  
-        uses: ublue-os/isogenerator
+        uses: ublue-os/isogenerator@6f3480e
         id: isogenerator
         with:
           image-name: ${{ github.event.repository.name }}
