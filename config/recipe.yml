@@ -1,7 +1,7 @@
 # image will be published to ghcr.io/<user>/<name>
-name: template
+name: hachiman 
 # description will be included in the image's metadata
-description: This is my personal OS image.
+description: Image for AMD based Framework Laptop.
 
 # the base image to build on top of (FROM) and the version tag to use
 base-image: ghcr.io/ublue-os/silverblue-main
@@ -26,6 +26,18 @@ modules:
       - firefox # default firefox removed in favor of flatpak
       - firefox-langpacks # langpacks needs to also be removed to prevent dependency problems
 
+  # Enable just until ppd 0.2 hits stable repo
+  - type: script
+    scripts:
+      - install_testing_ppd.sh
+
+  - type: systemd
+    system:
+      enabled:
+        - power-profiles-daemon.service
+      masked:
+        - tlp.service
+
   - type: default-flatpaks
     notify: true # Send notification after install/uninstall is finished (true/false)
     system:
@@ -34,9 +46,56 @@ modules:
       # repo-name: flathub
       # repo-title: "Flathub (system-wide)" # Optional; this sets the remote's user-facing name in graphical frontends like GNOME Software
       install:
+        # Media Apps
+        - org.pitivi.Pitivi
+        - org.pitivi.Pitivi.Codecs
+        - org.gimp.GIMP
+        - com.makemkv.MakeMKV
+        - com.spotify.Client
+        - com.github.iwalton3.jellyfin-media-player
+        - org.videolan.VLC
+        - io.lmms.LMMS
+        - com.obsproject.Studio
+        - fr.handbrake.ghb
+        # Computing Apps
         - org.mozilla.firefox
-        # - org.gnome.Loupe
-        # - one.ablaze.floorp//lightning # This is an example of flatpak which has multiple branches in selection (flatpak//branch).
+        - md.obsidian.Obsidian
+        - org.gnome.Recipes
+        - org.gnome.Calculator
+        - org.gnome.Calendar
+        - org.gnome.Contacts
+        - org.gnome.Evince
+        - org.gnome.Logs
+        - org.gnome.Todo
+        - org.gnome.NautilusPreviewer
+        - org.gnome.SimpleScan
+        - org.gnome.baobab
+        - org.gnome.clocks
+        - org.gnome.font-viewer
+        - org.signal.Signal
+        - com.slack.Slack
+        - org.gnome.DejaDup
+        - com.brave.Browser
+        - com.discordapp.Discord
+        - org.libreoffice.LibreOffice
+        - org.gnome.Weather
+        - org.gnome.Firmware
+        - org.gnome.Loupe
+        - com.transmissionbt.Transmission
+        - com.mattjakeman.ExtensionManager
+        - com.thincast.client
+        # Developemnt Apps
+        - org.zealdocs.Zeal
+        - org.gnome.Boxes
+        - org.gnome.Builder
+        - com.github.marhkb.Pods
+        - io.podman_desktop.PodmanDesktop
+        - com.vscodium.codium
+        - re.sonny.Workbench
+        # Games
+        - org.gnome.Reversi
+        - org.gnome.Mahjongg
+        - com.play0ad.zeroad
       # Flatpak runtimes are not supported (like org.winehq.Wine//stable-23.08),
       # only normal flatpak applications are (like Floorp Lightning web browser in this example).
       # Installing different branches of the same Flatpak is not supported.
