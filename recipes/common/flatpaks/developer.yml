@@ -1,0 +1,15 @@
+modules: # configured multiple times to highlight how options are overridden
+  - type: default-flatpaks
+    user:
+      install:
+        - com.jeffser.Alpaca
+        - io.github.dvlv.boxbuddyrs
+        - org.gnome.Builder
+        - ar.xjuan.Cambalache
+        - org.fedoraproject.MediaWriter
+        - com.github.marhkb.Pods
+        - io.podman_desktop.PodmanDesktop
+        - re.sonny.Workbench
+        - org.zealdocs.Zeal 
+        - app.drey.Biblioteca 
+        - dev.zed.Zed

@@ -1,0 +1,9 @@
+modules: # configured multiple times to highlight how options are overridden
+  - type: default-flatpaks
+    user:
+      repo-name: flathub
+      install:
+        - md.obsidian.Obsidian
+        - org.gnome.Fractal
+        - com.github.johnfactotum.Foliate
+        - ca.desrt.dconf-editor

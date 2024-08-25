@@ -1,0 +1,13 @@
+modules:
+  # Applications
+  - from-file: common/flatpaks/base.yml
+  - from-file: common/flatpaks/user.yml
+  - from-file: common/flatpaks/communications.yml
+  - from-file: common/flatpaks/developer.yml
+  - from-file: common/flatpaks/gaming.yml
+  - from-file: common/flatpaks/media.yml
+  - from-file: common/flatpaks/office.yml
+  - from-file: common/flatpaks/utilities.yml
+  # Extensions
+  - from-file: common/gnome-extensions/40.yml
+  

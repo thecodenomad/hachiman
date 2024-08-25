@@ -1,0 +1,8 @@
+modules: # configured multiple times to highlight how options are overridden
+  - type: default-flatpaks
+    user:
+      install:
+#        - flathub org.signal.Signal
+        - org.gnome.Fractal 
+        - com.discordapp.Discord
+

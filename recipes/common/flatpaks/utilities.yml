@@ -1,0 +1,10 @@
+modules: # configured multiple times to highlight how options are overridden
+  - type: default-flatpaks
+    user:
+      install:
+        - io.gitlab.gregorni.Letterpress
+        - it.mijorus.collector
+        - com.github.ADBeveridge.Raider
+        - com.transmissionbt.Transmission
+        - app.drey.Warp
+        - org.gnome.Weather

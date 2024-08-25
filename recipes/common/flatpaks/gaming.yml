@@ -1,0 +1,5 @@
+modules: # configured multiple times to highlight how options are overridden
+  - type: default-flatpaks
+    user:
+      install:
+        - net.lutris.Lutris 
