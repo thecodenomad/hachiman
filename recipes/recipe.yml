@@ -15,7 +15,8 @@ modules:
       - source: system
         destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
 
-  - from-file: common/rpm-ostree/gnome-40.yml
+  - from-file: common/rpm-ostree/rpm-ostree.yml
+  - from-file: common/rpm-ostree/gnome-base.yml
   - from-file: roles/laptop-user.yml 
 
   - type: akmods
@@ -24,6 +25,16 @@ modules:
     - framework-laptop 
     - ryzen-smu 
     - v4l2loopback
+
+  - type: systemd
+    system:
+      enabled:
+        - power-profiles-daemon.service
+      masked:
+        - tlp.service
+    user:
+      enabled:
+        - podman.socket
 
 #  - type: rpm-ostree
 #    repos:

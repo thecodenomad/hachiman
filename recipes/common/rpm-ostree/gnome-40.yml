@@ -1,5 +1,0 @@
-type: rpm-ostree
-
-remove:
-  - gnome-classic-session-xsession
-  - gnome-classic-session
