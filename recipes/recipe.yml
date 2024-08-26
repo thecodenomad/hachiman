@@ -22,7 +22,7 @@ modules:
     - type: justfiles
       validate: true
       include:
-          - 60-custom.just
+          - custom.just
 
     - type: akmods
       base: main # if not specified, classic "main" base is used by default
