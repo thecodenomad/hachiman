@@ -1,0 +1,5 @@
+type: rpm-ostree
+keys:
+    - https://repo.protonvpn.com/fedora-40-stable/public_key.asc
+install:
+    - https://repo.protonvpn.com/fedora-40-stable/protonvpn-stable-release/protonvpn-stable-release-1.0.1-2.noarch.rpm

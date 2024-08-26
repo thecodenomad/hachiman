@@ -1,0 +1,17 @@
+[org/gnome/desktop/peripherals]
+natural-scroll=false
+tap-to-click=false
+two-finger-scrolling-enabled=true
+
+[org/gnome/settings-daemon/plugins/color]
+night-light-enabled=true
+night-light-schedule-automatic=false
+night-light-schedule-from=7.0
+
+[org/gnome/settings-daemon/plugins/power]
+ambient-enabled=false
+idle-dim=true
+sleep-inactive-ac-timeout=3600
+
+[org/gnome/terminal/legacy]
+theme-variant='system'

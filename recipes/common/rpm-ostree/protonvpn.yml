@@ -1,0 +1,6 @@
+type: rpm-ostree
+install:
+    - gnome-extensions-app
+    - gnome-shell-extension-appindicator
+    - libappindicator-gtk3
+    - proton-vpn-gnome-desktop
