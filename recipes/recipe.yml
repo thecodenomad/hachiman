@@ -10,6 +10,8 @@ image-version: 40 # latest is also supported if you want new updates ASAP
 # module configuration, executed in order
 # you can include multiple instances of the same module
 modules:
+    # Copy over base files
+    # TODO: Global system configuration...
     - type: files
       files:
           - source: system
@@ -17,6 +19,8 @@ modules:
 
     - from-file: common/rpm-ostree/rpm-ostree.yml
     - from-file: common/rpm-ostree/gnome-base.yml
+
+    # TODO: Clean up to be more 'role' like.
     - from-file: roles/laptop-user.yml
 
     - type: justfiles
@@ -24,6 +28,8 @@ modules:
       include:
           - custom.just
 
+    # TODO: Can kernel be swapped out? Would like cachy kernel, how could this
+    # akmods repo be modified to support the copr release of cachy kernel?
     - type: akmods
       base: main # if not specified, classic "main" base is used by default
       install:
