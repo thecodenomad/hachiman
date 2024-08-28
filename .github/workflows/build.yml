@@ -15,7 +15,9 @@ env:
     IMAGE_REPO: "ghcr.io/thecodenomad"
     IMAGE_TAG: "latest"
     VERSION: "40"
-    VARIANT: "Silverblue"
+    # Ref: https://github.com/JasonN3/build-container-installer/issues/110
+    # "Silverblue" doesn't provide user configuration during install
+    VARIANT: "Server"
 
 jobs:
     bluebuild:
