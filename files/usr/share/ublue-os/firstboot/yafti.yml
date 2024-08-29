@@ -1,0 +1,184 @@
+# Ref: https://github.com/jitcos/cabos/blob/main/files/usr/share/ublue-os/firstboot/yafti.yml
+title: Welcome to Hachiman
+properties:
+    mode: "run-on-change"
+screens:
+    first-screen:
+        source: yafti.screen.title
+        values:
+            title: "Welcome to Hachiman"
+            icon: "/usr/share/hachiman/hachiman-logo.png"
+            description: |
+                This is a guided installer meant to help setup your system.
+    can-we-modify-your-flatpaks:
+        source: yafti.screen.consent
+        values:
+            title: Welcome, Warrior!
+            condition:
+                run: flatpak remotes --columns=name | grep fedora
+            description: |
+                We have detected the limited, Fedora-provided Flatpak remote on your system, whose applications are usually missing important codecs and other features. This step will therefore remove all basic Fedora Flatpaks from your system! We will instead switch all core Flatpak applications over to the vastly superior, unfiltered Flathub. If you don't want to do this, simply exit this installer.
+            actions:
+                - run: flatpak remote-delete --system --force fedora
+                - run: flatpak remote-delete --user --force fedora
+                - run: flatpak remove --system --noninteractive --all
+                - run: flatpak remote-add --if-not-exists --system flathub https://flathub.org/repo/flathub.flatpakrepo
+                - run: flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
+    check-system-flathub:
+        source: yafti.screen.consent
+        values:
+            title: Missing Flathub Repository (System)
+            condition:
+                run: flatpak remotes --system --columns=name | grep flathub | wc -l | grep '^0$'
+            description: |
+                We have detected that you don't have Flathub's repository on your system. We will now add that repository to your system-wide list.
+            actions:
+                - run: flatpak remote-add --if-not-exists --system flathub https://flathub.org/repo/flathub.flatpakrepo
+    check-user-flathub:
+        source: yafti.screen.consent
+        values:
+            title: Missing Flathub Repository (User)
+            condition:
+                run: flatpak remotes --user --columns=name | grep flathub | wc -l | grep '^0$'
+            description: |
+                We have detected that you don't have Flathub's repository on your current user account. We will now add that repository to your account.
+            actions:
+                - run: flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
+    applications:
+        source: yafti.screen.package
+        values:
+            title: Application Installer
+            show_terminal: true
+            package_manager: yafti.plugin.flatpak
+            package_manager_defaults:
+                user: true
+                system: false
+            groups:
+                Core GNOME Apps:
+                    description: Core system applications for the GNOME desktop environment.
+                    default: true
+                    packages:
+                        - Calculator: org.gnome.Calculator
+                        - Characters: org.gnome.Characters
+                        - Disk Usage Analyzer: org.gnome.baobab
+                        - Font Viewer: org.gnome.font-viewer
+                        - Logs: org.gnome.Logs
+                        - Maps: org.gnome.Maps
+                        - Photos (Organizer): org.gnome.Photos
+                        - Sushi (Nautilus Previewer): org.gnome.NautilusPreviewer
+                        - Weather: org.gnome.Weather
+                Hachiman Base Apps:
+                    description: Base applications for all Hachiman roles
+                    default: true
+                    packages:
+                        - Collision: dev.geopjr.Collision
+                        - Deja Dup (Backup): org.gnome.DejaDup
+                        - Extensions: org.gnome.Extensions
+                        - Extension Manager: com.mattjakeman.ExtensionManager
+                        - Fedora Media Writer: org.fedoraproject.MediaWriter
+                        - Font Downloader: org.gustavoperedo.FontDownloader
+                        - Firmware: org.gnome.Firmware
+                        - Flatseal: com.github.tchx84.Flatseal
+                        - Image Viewer: org.gnome.Loupe
+                        - Librewolf (Browser): io.gitlab.librewolf-community
+                        - Mission Center: io.missioncenter.MissionCenter
+                        - Ptyxis (Terminal): app.devsuite.Ptyxis
+                Hachiman User Apps:
+                    description: Default user applications for all systems
+                    default: true
+                    packages:
+                        - Calendar: org.gnome.Calendar
+                        - Contacts: org.gnome.Contacts
+                        - Foliate (ebook Reader): com.github.johnfactotum.Foliate
+                        - GNOME Conf Editor: ca.desrt.dconf-editor
+                        - Obsidian: md.obsidian.Obsidian
+                Web Browsers:
+                    description: Additional browsers to complement or replace Firefox.
+                    default: false
+                    packages:
+                        - Brave: com.brave.Browser
+                        - Chromium: org.chromium.Chromium
+                        - Firefox: org.mozilla.firefox
+                        - Microsoft Edge: com.microsoft.Edge
+                        - GNOME Web: org.gnome.Epiphany
+                Development:
+                    description: Development tools and IDEs.
+                    default: false
+                    packages:
+                        - Alpaca (local ai): com.jeffser.Alpaca
+                        - Biblioteca: app.drey.Biblioteca
+                        - BoxBuddy: io.github.dvlv.boxbuddyrs
+                        - Cambalache: ar.xjuan.Cambalache
+                        - GNOME Builder: org.gnome.Builder
+                        - Meld: org.gnome.meld
+                        - Podman Desktop: io.podman_desktop.PodmanDesktop
+                        - Pods: com.github.marhkb.Pods
+                        - Workbench: re.sonny.Workbench
+                        - Zeal: org.zealdocs.Zeal
+                        - Zed: dev.zed.Zed
+                Multimedia:
+                    description: Multimedia tools for playing and editing media.
+                    default: false
+                    packages:
+                        - Spotify: com.spotify.Client
+                        - Camera: org.gnome.Snapshot
+                        - Handbrake: fr.handbrake.ghb
+                        - Jellyfin: com.github.iwalton3.jellyfin-media-player
+                        - Spotify (OSS): dev.alextren.Spot
+                        - Metadata Cleaner: fr.romainvigier.MetadataCleaner
+                        - Shotwell: org.gnome.Shotwell
+                        - VideoTrimmer: org.gnome.gitlab.YaLTeR.VideoTrimmer
+                        - Shotcut: org.shotcut.Shotcut
+                        - Clapper: com.github.rafostar.Clapper
+                        - OBS Studio: com.obsproject.Studio
+                        - MakeMKV: com.makemkv.MakeMKV
+                Graphics:
+                    description: Graphics tools for creating and editing images.
+                    default: false
+                    packages:
+                        - Gimp: org.gimp.GIMP
+                        - Graphs: se.sjoerd.Graphs
+                        - Inkscape: org.inkscape.Inkscape
+                        - OpenSCAD: org.openscad.OpenSCAD
+                Communication:
+                    description: Communication tools for chatting, messaging, and more.
+                    default: false
+                    packages:
+                        - Discord: com.discordapp.Discord
+                        - Fractal: org.gnome.Fractal
+                        - Signal: org.signal.Signal
+                        - Remmina: org.remmina.Remmina
+                Gaming:
+                    description: Gaming tools for playing games, streaming, and more.
+                    default: false
+                    packages:
+                        - Bottles: com.usebottles.bottles
+                        - Lutris: net.lutris.Lutris
+                        - Steam: com.valvesoftware.Steam
+                Office:
+                    description: Boost your productivity.
+                    default: false
+                    packages:
+                        - Citations: org.gnome.World.Citations
+                        - Document Viewer: org.gnome.Evince
+                        - LibreOffice: org.libreoffice.LibreOffice
+                        - Kolibri Learning: org.learningequality.Kolibri
+                        - Paperwork: work.openpaper.Paperwork
+                        - Simple Scan: org.gnome.SimpleScan
+                        - Thunderbird Email: org.mozilla.Thunderbird
+                Streaming:
+                    description: Stream to the Internet.
+                    default: false
+                    packages:
+                        - OBS Studio: com.obsproject.Studio
+
+    final-screen:
+        source: yafti.screen.title
+        values:
+            title: "All done!"
+            icon: "/usr/share/hachiman/hachiman-logo.png"
+            links:
+                - "Install More Applications":
+                      run: /usr/bin/gnome-software
+            description: |
+                Thanks for being a warrior and using Hachiman!
