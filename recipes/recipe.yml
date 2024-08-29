@@ -17,16 +17,15 @@ modules:
           - source: system
             destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
 
+    - type: gschema-overrides
+      include:
+          - zz99-hachiman.gschema.override
+
     - from-file: common/rpm-ostree/rpm-ostree.yml
     - from-file: common/rpm-ostree/gnome-base.yml
 
     # TODO: Clean up to be more 'role' like.
     - from-file: roles/laptop-user.yml
-
-    - type: justfiles
-      validate: true
-      include:
-          - custom.just
 
     # TODO: Can kernel be swapped out? Would like cachy kernel, how could this
     # akmods repo be modified to support the copr release of cachy kernel?

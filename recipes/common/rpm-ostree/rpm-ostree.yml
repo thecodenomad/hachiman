@@ -11,8 +11,8 @@ install:
     - gnome-disk-utility
     - jq
     - libvirt
+    - micro
     - nautilus-gsconnect
-    - neovim
     - NetworkManager-openvpn
     - openvpn
     - p7zip
@@ -27,3 +27,4 @@ install:
     - samba-ldb-ldap-modules
     - samba-winbind-clients
     - samba-winbind-modules
+    - vim
