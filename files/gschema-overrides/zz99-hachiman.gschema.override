@@ -1,7 +1,14 @@
+[org.gnome.desktop.interface]
+color-scheme="prefer-dark"
+
 [org.gnome.desktop.background]
 picture-options="zoom"
 picture-uri='file:///usr/share/backgrounds/hachiman/default-2.jpg'
 picture-uri-dark='file:///usr/share/backgrounds/hachiman/default-2.jpg'
+
+[org.gnome.desktop.wm.preferences]
+button-layout=":minimize,maximize,close"
+num-workspaces=4
 
 [org/gnome/desktop/peripherals]
 natural-scroll=false
@@ -24,3 +31,15 @@ theme-variant='system'
 [org.gnome.shell]
 favorite-apps=['org.signal.Signal.desktop', 'org.gnome.Fractal.desktop', 'md.obsidian.Obsidian.desktop', 'app.devsuite.Ptyxis.desktop', 'io.gitlab.librewolf-community.desktop', 'org.gnome.Calendar.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Software.desktop', 'com.spotify.Client.desktop', 'io.missioncenter.MissionCenter.desktop', 'dev.zed.Zed-Dev.desktop']
 enabled-extensions=[]
+
+[org.gnome.Ptyxis]
+restore-session=false
+restore-window-size=false
+audible-bell=false
+visual-bell=false
+profile-uuids=['3793b1b2eaa4601966d3413a66d069a9']
+default-profile-uuid='3793b1b2eaa4601966d3413a66d069a9'
+
+[org.gnome.Ptyxis.Profiles.3793b1b2eaa4601966d3413a66d069a9]
+palette='VS Code'
+label='Default'
