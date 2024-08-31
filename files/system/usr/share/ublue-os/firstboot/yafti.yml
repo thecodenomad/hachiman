@@ -83,27 +83,23 @@ screens:
                         - Librewolf (Browser): io.gitlab.librewolf-community
                         - Mission Center: io.missioncenter.MissionCenter
                         - Ptyxis (Terminal): app.devsuite.Ptyxis
-                Hachiman User Apps:
+                Hachiman User Role:
                     description: Default user applications for all systems
                     default: true
                     packages:
                         - Calendar: org.gnome.Calendar
+                        - Camera: org.gnome.Snapshot
                         - Contacts: org.gnome.Contacts
                         - Foliate (ebook Reader): com.github.johnfactotum.Foliate
+                        - Gimp: org.gimp.GIMP
                         - GNOME Conf Editor: ca.desrt.dconf-editor
+                        - Jellyfin: com.github.iwalton3.jellyfin-media-player
                         - Obsidian: md.obsidian.Obsidian
-                Web Browsers:
-                    description: Additional browsers to complement or replace Firefox.
-                    default: false
-                    packages:
-                        - Brave: com.brave.Browser
-                        - Chromium: org.chromium.Chromium
-                        - Firefox: org.mozilla.firefox
-                        - Microsoft Edge: com.microsoft.Edge
-                        - GNOME Web: org.gnome.Epiphany
-                Development:
-                    description: Development tools and IDEs.
-                    default: false
+                        - Spotify: com.spotify.Client
+                        - Spotify (OSS): dev.alextren.Spot
+                Hachiman Developer Role:
+                    description: Default Developer Role Applications.
+                    default: true
                     packages:
                         - Alpaca (local ai): com.jeffser.Alpaca
                         - Biblioteca: app.drey.Biblioteca
@@ -116,15 +112,11 @@ screens:
                         - Workbench: re.sonny.Workbench
                         - Zeal: org.zealdocs.Zeal
                         - Zed: dev.zed.Zed
-                Multimedia:
-                    description: Multimedia tools for playing and editing media.
-                    default: false
+                Hachiman Creator Role:
+                    description: Default Creator Role Applications.
+                    default: true
                     packages:
-                        - Spotify: com.spotify.Client
-                        - Camera: org.gnome.Snapshot
                         - Handbrake: fr.handbrake.ghb
-                        - Jellyfin: com.github.iwalton3.jellyfin-media-player
-                        - Spotify (OSS): dev.alextren.Spot
                         - Metadata Cleaner: fr.romainvigier.MetadataCleaner
                         - Shotwell: org.gnome.Shotwell
                         - VideoTrimmer: org.gnome.gitlab.YaLTeR.VideoTrimmer
@@ -132,14 +124,28 @@ screens:
                         - Clapper: com.github.rafostar.Clapper
                         - OBS Studio: com.obsproject.Studio
                         - MakeMKV: com.makemkv.MakeMKV
-                Graphics:
-                    description: Graphics tools for creating and editing images.
-                    default: false
-                    packages:
-                        - Gimp: org.gimp.GIMP
                         - Graphs: se.sjoerd.Graphs
                         - Inkscape: org.inkscape.Inkscape
                         - OpenSCAD: org.openscad.OpenSCAD
+                Hachiman Gamer Role:
+                    description: Default Gamer Role Applications.
+                    default: true
+                    packages:
+                        #    - Bottles: com.usebottles.bottles
+                        - Lutris: net.lutris.Lutris
+                        #    - Steam: com.valvesoftware.Steam
+                Hachiman Office User Role:
+                    description: Default Office Role Applications.
+                    default: true
+                    packages:
+                        - Citations: org.gnome.World.Citations
+                        - Document Viewer: org.gnome.Evince
+                        - LibreOffice: org.libreoffice.LibreOffice
+                        #    - Kolibri Learning: org.learningequality.Kolibri
+                        - Paperwork: work.openpaper.Paperwork
+                        - Remmina: org.remmina.Remmina
+                        - Simple Scan: org.gnome.SimpleScan
+                    #    - Thunderbird Email: org.mozilla.Thunderbird
                 Communication:
                     description: Communication tools for chatting, messaging, and more.
                     default: false
@@ -147,30 +153,15 @@ screens:
                         - Discord: com.discordapp.Discord
                         - Fractal: org.gnome.Fractal
                         - Signal: org.signal.Signal
-                        - Remmina: org.remmina.Remmina
-                Gaming:
-                    description: Gaming tools for playing games, streaming, and more.
-                    default: false
+                Additional Web Browsers:
+                    description: Additional browsers to complement or replace Firefox.
+                    default: true
                     packages:
-                        - Bottles: com.usebottles.bottles
-                        - Lutris: net.lutris.Lutris
-                        - Steam: com.valvesoftware.Steam
-                Office:
-                    description: Boost your productivity.
-                    default: false
-                    packages:
-                        - Citations: org.gnome.World.Citations
-                        - Document Viewer: org.gnome.Evince
-                        - LibreOffice: org.libreoffice.LibreOffice
-                        - Kolibri Learning: org.learningequality.Kolibri
-                        - Paperwork: work.openpaper.Paperwork
-                        - Simple Scan: org.gnome.SimpleScan
-                        - Thunderbird Email: org.mozilla.Thunderbird
-                Streaming:
-                    description: Stream to the Internet.
-                    default: false
-                    packages:
-                        - OBS Studio: com.obsproject.Studio
+                        # - Brave: com.brave.Browser
+                        - Chromium: org.chromium.Chromium
+                        # - Firefox: org.mozilla.firefox
+                        # - Microsoft Edge: com.microsoft.Edge
+                        - GNOME Web: org.gnome.Epiphany
 
     final-screen:
         source: yafti.screen.title
