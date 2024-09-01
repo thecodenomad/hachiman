@@ -3,8 +3,8 @@ color-scheme="prefer-dark"
 
 [org.gnome.desktop.background]
 picture-options="zoom"
-picture-uri='file:///usr/share/backgrounds/hachiman/default-2.jpg'
-picture-uri-dark='file:///usr/share/backgrounds/hachiman/default-2.jpg'
+picture-uri='file:///usr/share/backgrounds/hachiman/default-1.jpg'
+picture-uri-dark='file:///usr/share/backgrounds/hachiman/default-1.jpg'
 
 [org.gnome.desktop.wm.preferences]
 button-layout=":minimize,maximize,close"

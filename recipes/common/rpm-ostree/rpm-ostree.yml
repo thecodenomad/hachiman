@@ -1,6 +1,7 @@
 type: rpm-ostree
 install:
     - binutils
+    - curl
     - distrobox
     - dmidecode
     - gcc
@@ -27,4 +28,5 @@ install:
     - samba-ldb-ldap-modules
     - samba-winbind-clients
     - samba-winbind-modules
+    - wget
     - vim

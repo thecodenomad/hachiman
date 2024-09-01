@@ -3,13 +3,14 @@ modules:
     - from-file: common/gnome-extensions/40.yml
     # Proton VPN
     - from-file: common/rpm-ostree/protonvpn.yml
+    # Proton Mail
+    - from-file: common/protonmail.yml
 
 # Customizations for main user
 type: gschema-overrides
 include:
     - codenomad.gschema
     # TODO:
-    #   Custom wallpapers additions
     #   Chezmoi setup
     #   Setup fpread disable when lid is closed
     #   Add distrobox.ini for custom distroboxes

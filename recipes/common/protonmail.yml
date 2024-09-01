@@ -1,0 +1,4 @@
+type: rpm-ostree
+install:
+    # TODO: Make this into a script that can verify the RPM via sha512sum
+    - https://proton.me/download/mail/linux/ProtonMail-desktop-beta.rpm
