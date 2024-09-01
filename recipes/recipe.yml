@@ -17,14 +17,31 @@ modules:
           - source: system
             destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
 
+    - from-file: common/rpm-ostree/rpm-ostree.yml
+    - from-file: common/rpm-ostree/gnome-base.yml
+
+    # Setup GNOME Customizations
     - type: gschema-overrides
       include:
           - zz99-hachiman.gschema.override
 
-    - from-file: common/rpm-ostree/rpm-ostree.yml
-    - from-file: common/rpm-ostree/gnome-base.yml
+    - type: fonts
+      fonts:
+          nerd-fonts:
+              - FiraCode # don't add spaces or "Nerd Font" suffix.
+              - Hack
+              - SourceCodePro
+              - Terminus
+              - JetBrainsMono
+              - NerdFontsSymbolsOnly
+          google-fonts:
+              - Roboto
+              - Open Sans
 
-    # TODO: Clean up to be more 'role' like.
+    # Setup Base Usage Role
+    # The intent is to have a recipe per role with multiple roles to handle system
+    # level applications.
+    # TODO: Maybe a standard developer role? Or should that all be done in distrobox?
     - from-file: roles/laptop-user.yml
 
     # TODO: Can kernel be swapped out? Would like cachy kernel, how could this
@@ -39,11 +56,13 @@ modules:
     - type: systemd
       system:
           enabled:
+              # Framework AMD laptop requires PPD over TLP.
               - power-profiles-daemon.service
           masked:
               - tlp.service
       user:
           enabled:
+              # Podman should always be running for this user
               - podman.socket
 
     - type: yafti

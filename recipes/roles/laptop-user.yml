@@ -1,3 +1,5 @@
+# This module should include the base applications installed at the system level
+# for this particular role.
 modules:
     # Extensions
     - from-file: common/gnome-extensions/40.yml
@@ -5,12 +7,8 @@ modules:
     - from-file: common/rpm-ostree/protonvpn.yml
     # Proton Mail
     - from-file: common/protonmail.yml
-
 # Customizations for main user
-type: gschema-overrides
-include:
-    - codenomad.gschema
-    # TODO:
-    #   Chezmoi setup
-    #   Setup fpread disable when lid is closed
-    #   Add distrobox.ini for custom distroboxes
+# TODO:
+#   Chezmoi setup
+#   Setup fpread disable when lid is closed
+#   Add distrobox.ini for custom distroboxes
