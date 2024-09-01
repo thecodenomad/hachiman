@@ -10,4 +10,4 @@ generate-iso:
         IMAGE_REPO=ghcr.io/thecodenomad \
         IMAGE_NAME=hachiman \
         IMAGE_TAG=40 \
-        VARIANT=Silverblue
+        VARIANT=Server
