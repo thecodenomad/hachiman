@@ -7,7 +7,7 @@ screens:
         source: yafti.screen.title
         values:
             title: "Welcome to Hachiman"
-            icon: "/usr/share/hachiman/hachiman-logo.png"
+            icon: "/usr/share/hachiman/hachiman-logo-square.svg"
             description: |
                 This is a guided installer meant to help setup your system.
     can-we-modify-your-flatpaks:
@@ -152,7 +152,7 @@ screens:
         source: yafti.screen.title
         values:
             title: "All done!"
-            icon: "/usr/share/hachiman/hachiman-logo.png"
+            icon: "/usr/share/hachiman/hachiman-logo-square.svg"
             links:
                 - "Install More Applications":
                       run: /usr/bin/gnome-software
