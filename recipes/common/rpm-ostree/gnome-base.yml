@@ -1,5 +1,7 @@
 modules:
     - type: rpm-ostree
+      install:
+          - nautilus-python # Required for collision plugin
       remove:
           - gnome-classic-session-xsession
           - gnome-classic-session
@@ -14,6 +16,11 @@ modules:
           - gnome-shell-extension-places-menu
           - gnome-shell-extension-window-list
           - gnome-shell-extension-background-logo
+
+    # Install Chezmoi using upstream rpm
+    - type: rpm-ostree
+      install:
+          - https://github.com/twpayne/chezmoi/releases/download/v2.52.1/chezmoi-2.52.1-x86_64.rpm
 
     # Default Extensions
     - from-file: common/gnome-extensions/40.yml

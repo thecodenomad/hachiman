@@ -11,3 +11,10 @@ generate-iso:
         IMAGE_NAME=hachiman \
         IMAGE_TAG=40 \
         VARIANT=Server
+
+# Ref: https://github.com/GeopJr/Collision/tree/main
+nautilus-collision:
+    mkdir -p ~/.local/share/nautilus-python/extensions/
+    wget https://raw.githubusercontent.com/GeopJr/Collision/v3.8.1/nautilus-extension/collision-extension.py -O \
+      ~/.local/share/nautilus-python/extensions/collision-extension.py
+    nautilus -q || true
