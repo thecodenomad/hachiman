@@ -1,43 +1,36 @@
-# BlueBuild Template &nbsp; [![bluebuild build badge](https://github.com/blue-build/template/actions/workflows/build.yml/badge.svg)](https://github.com/blue-build/template/actions/workflows/build.yml)
+# Hachiman
 
-See the [BlueBuild docs](https://blue-build.org/how-to/setup/) for quick setup instructions for setting up your own repository based on this template.
+I set out to build a flavor of Silverblue meant for an AMD-based (7840U) Framework Laptop based on the BlueBuild project.
+This includes my preferred GNOME settings, and default apps. The few base binaries are in
+`recipes/common/rpm-ostree/rpm-ostree.yml`.
 
-After setup, it is recommended you update this README to describe your custom image.
+Disclaimer: There are plenty of rough edges around this, so if you choose to install do so via the ISO and don't
+blame me if your cat catches fire or if your partner runs away with a delivery person.
 
-## Installation
+## Bluebuild Recipe Descriptions
 
-> **Warning**  
-> [This is an experimental feature](https://www.fedoraproject.org/wiki/Changes/OstreeNativeContainerStable), try at your own discretion.
+`recipes/common/rpm-ostree/rpm-ostree.yml` - Contains all cli binaries installed regardless of DE. This should work
+regardless of any established roles.
 
-To rebase an existing atomic Fedora installation to the latest build:
+`recipes/roles/laptop-user.yml` - This is my main user, everything I need to setup a new laptop with my preferences.
 
-- First rebase to the unsigned image, to get the proper signing keys and policies installed:
-  ```
-  rpm-ostree rebase ostree-unverified-registry:ghcr.io/blue-build/template:latest
-  ```
-- Reboot to complete the rebase:
-  ```
-  systemctl reboot
-  ```
-- Then rebase to the signed image, like so:
-  ```
-  rpm-ostree rebase ostree-image-signed:docker://ghcr.io/blue-build/template:latest
-  ```
-- Reboot again to complete the installation
-  ```
-  systemctl reboot
-  ```
+## Project Opinions
 
-The `latest` tag will automatically point to the latest build. That build will still always use the Fedora version specified in `recipe.yml`, so you won't get accidentally updated to the next major version.
+| Opinion | Minimum | Preferred | Current Support |
+| VPN | OpenVPN | OpenVPN, ProtonVPN, Tailscale | Done |
+| User Config Management | chezmoi | - | Partial |
+| System Config Management | bluebuild files | - | Done |
+| Default GUI Apps | flatpak | - | Done |
+| Dev environments | distrobox | - | Done |
 
-## ISO
-
-If build on Fedora Atomic, you can generate an offline ISO with the instructions available [here](https://blue-build.org/learn/universal-blue/#fresh-install-from-an-iso). These ISOs cannot unfortunately be distributed on GitHub for free due to large sizes, so for public projects something else has to be used for hosting.
-
-## Verification
-
-These images are signed with [Sigstore](https://www.sigstore.dev/)'s [cosign](https://github.com/sigstore/cosign). You can verify the signature by downloading the `cosign.pub` file from this repo and running the following command:
-
-```bash
-cosign verify --key cosign.pub ghcr.io/blue-build/template
-```
+TODOs:
+- Create roles for the following:
+  - Server role - Installs the basics for setting up a homelab server
+  - Developer role - Installs the basics for my preferred development environment regardless of DE.
+- Move non-global configuration files to chezmoi
+- Dev environment in base system, or integrated with distrobox
+- Github Runner
+  - setup to upload container images to local docker repo
+  - setup to upload current ISO and shas to local SMB backup
+- Continued organization
+  - recipes/common/rpm-ostree/<DE>-base.yml - Applications/utilities that should be added/removed for a given DE
