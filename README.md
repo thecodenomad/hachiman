@@ -16,7 +16,8 @@ regardless of any established roles.
 
 ## Project Opinions
 
-| Opinion | Minimum | Preferred | Current Support |
+| Opinion | Minimum | Preferred | Current Status |
+| --- | --- | --- | --- |
 | VPN | OpenVPN | OpenVPN, ProtonVPN, Tailscale | Done |
 | User Config Management | chezmoi | - | Partial |
 | System Config Management | bluebuild files | - | Done |
