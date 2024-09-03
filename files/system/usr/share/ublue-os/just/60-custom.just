@@ -1,6 +1,6 @@
 establish-distrobox:
     @echo "Creating local distroboxes"
-    distrobox assemble create --file /usr/share/hachiman/distrobox/distrobox.ini
+    distrobox assemble create --file ${GLOBAL_DISTROBOX_INI}
 
 generate-iso:
     mkdir -p $HOME/iso-output
@@ -18,7 +18,6 @@ nautilus-collision:
     wget https://raw.githubusercontent.com/GeopJr/Collision/v3.8.1/nautilus-extension/collision-extension.py -O \
       ~/.local/share/nautilus-python/extensions/collision-extension.py
     nautilus -q || true
-
 
 # Ref: https://github.com/tbvdm/sigtop
 sigtop:
