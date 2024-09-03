@@ -1,7 +1,7 @@
 # image will be published to ghcr.io/<user>/<name>
 name: cosmic-hachiman
 # description will be included in the image's metadata
-description: Personal Laptop Image based on BlueBuild.
+description: Experimental Cosmic Support
 
 # the base image to build on top of (FROM) and the version tag to use
 base-image: ghcr.io/ublue-os/cosmic-silverblue
@@ -64,5 +64,4 @@ modules:
               # Podman should always be running for this user
               - podman.socket
 
-    - type: yafti
     - type: signing # this sets up the proper policy & signing files for signed images to work fully

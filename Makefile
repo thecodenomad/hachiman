@@ -1,6 +1,6 @@
 # Default to Github Registry
-IMAGE_REPO =? "ghcr.io/thecodenomad"
-IMAGE_TAG =? "latest"
+IMAGE_REPO="ghcr.io/thecodenomad"
+IMAGE_TAG="latest"
 
 clean:
 	rm -rf ${PWD}/iso-output
