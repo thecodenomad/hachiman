@@ -1,8 +1,6 @@
 # This module should include the base applications installed at the system level
 # for this particular role.
 modules:
-    # Extensions
-    - from-file: common/gnome-extensions/40.yml
     # Proton VPN
     - from-file: common/rpm-ostree/protonvpn.yml
     # Proton Mail

@@ -1,0 +1,68 @@
+# image will be published to ghcr.io/<user>/<name>
+name: cosmic-hachiman
+# description will be included in the image's metadata
+description: Personal Laptop Image based on BlueBuild.
+
+# the base image to build on top of (FROM) and the version tag to use
+base-image: ghcr.io/ublue-os/cosmic-silverblue
+image-version: 40 # latest is also supported if you want new updates ASAP
+
+# module configuration, executed in order
+# you can include multiple instances of the same module
+modules:
+    # Copy over base files
+    # TODO: Global system configuration...
+    - type: files
+      files:
+          - source: system
+            destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
+
+    - from-file: common/rpm-ostree/rpm-ostree.yml
+
+    # Setup Cosmic Customizations
+    # - type: gschema-overrides
+    #   include:
+    #       - zz99-hachiman.gschema.override
+
+    - type: fonts
+      fonts:
+          nerd-fonts:
+              - FiraCode # don't add spaces or "Nerd Font" suffix.
+              - Hack
+              - SourceCodePro
+              - Terminus
+              - JetBrainsMono
+              - NerdFontsSymbolsOnly
+          google-fonts:
+              - Roboto
+              - Open Sans
+
+    # Setup Base Usage Role
+    # The intent is to have a recipe per role with multiple roles to handle system
+    # level applications.
+    # TODO: Maybe a standard developer role? Or should that all be done in distrobox?
+    - from-file: roles/laptop-user.yml
+
+    # TODO: Can kernel be swapped out? Would like cachy kernel, how could this
+    # akmods repo be modified to support the copr release of cachy kernel?
+    - type: akmods
+      base: main # if not specified, classic "main" base is used by default
+      install:
+          - framework-laptop
+          - ryzen-smu
+          - v4l2loopback
+
+    - type: systemd
+      system:
+          enabled:
+              # Framework AMD laptop requires PPD over TLP.
+              - power-profiles-daemon.service
+          masked:
+              - tlp.service
+      user:
+          enabled:
+              # Podman should always be running for this user
+              - podman.socket
+
+    - type: yafti
+    - type: signing # this sets up the proper policy & signing files for signed images to work fully
