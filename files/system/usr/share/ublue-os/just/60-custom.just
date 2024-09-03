@@ -22,3 +22,10 @@ nautilus-collision:
 # Ref: https://github.com/tbvdm/sigtop
 sigtop:
     distrobox assemble create --file ${GLOBAL_DISTROBOX_INI} --name sigtop --replace
+
+refresh-podman-socket:
+    systemctl --user stop podman.socket
+    systemctl --user disable podman.socket
+    systemctl --user enable podman.socket
+    systemctl --user start podman.socket
+    systemctl --user status podman.socket
