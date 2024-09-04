@@ -36,9 +36,9 @@ nautilus-collision:
 establish-distrobox:
     # Create folders for the distroboxes
     @echo "Creating local distroboxes home folders"
-    mkdir -p "$HOME/.local/share/container-sigtop/home" \
-             "$HOME/.local/share/container-dev/home" \
-             "$HOME/.local/share/container-perf/home"
+    mkdir -p "$HOME/.local/share/hachiman/distrobox-sigtop-home" \
+             "$HOME/.local/share/hachiman/distrobox-dev-home" \
+             "$HOME/.local/share/hachiman/distrobox-perf-home"
     @echo "Creating local distroboxes"
     distrobox assemble create --file ${GLOBAL_DISTROBOX_INI} --replace
 

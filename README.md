@@ -24,6 +24,16 @@ regardless of any established roles.
 | Default GUI Apps | flatpak | - | Done |
 | Dev environments | distrobox | - | Done |
 
+## Opinionated Distrobox Configuration
+
+Go and Rust libraries can get unwieldy, so local dev environments will use dedicated home directories to
+to keep libraries from cluttering the home folder.
+
+The distrobox home folders follow the convention of:
+`home=$HOME/.local/share/container-<name>-home`
+
+## Next Up
+
 TODOs:
 - Create roles for the following:
   - Server role - Installs the basics for setting up a homelab server
