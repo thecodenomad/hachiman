@@ -40,11 +40,12 @@ upgrade-hachiman:
 establish-distrobox:
     # Create folders for the distroboxes
     @echo "Creating local distroboxes home folders"
-    mkdir -p "${HACHIMAN_DISTROBOX_HOME}/sigtop-home" \
-             "${HACHIMAN_DISTROBOX_HOME}/dev-home" \
+    mkdir -p "${HACHIMAN_DISTROBOX_HOME}/dev-home" \
              "${HACHIMAN_DISTROBOX_HOME}/perf-home"
     @echo "Creating local distroboxes"
-    distrobox assemble create --file ${HACHIMAN_DISTROBOX_INI} --replace
+    # Bug? using global creation caused issue with init hooks
+    distrobox assemble create --name dev --file ${HACHIMAN_DISTROBOX_INI} --replace
+    distrobox assemble create --name perf --file ${HACHIMAN_DISTROBOX_INI} --replace
 
 # Utility for backing up Signal Desktop
 # Ref: https://github.com/tbvdm/sigtop

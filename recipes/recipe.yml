@@ -50,8 +50,11 @@ modules:
       base: main # if not specified, classic "main" base is used by default
       install:
           - framework-laptop
-          - ryzen-smu
           - v4l2loopback
+          # TODO: look into using different repo to support codename=phoenix
+          # See - https://gitlab.com/moson-mo/ryzen_smu
+          # Create PR with the above changes into https://github.com/ublue-os/ryzen_smu
+          # - ryzen-smu
 
     - type: systemd
       system:
