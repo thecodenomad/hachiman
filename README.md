@@ -29,8 +29,17 @@ regardless of any established roles.
 Go and Rust libraries can get unwieldy, so local dev environments will use dedicated home directories to
 to keep libraries from cluttering the home folder.
 
-The distrobox home folders follow the convention of:
-`home=$HOME/.local/share/container-<name>-home`
+The distrobox home folders follow this convention:
+`home=${HACHIMAN_DISTROBOX_HOME}/<distrobox name>-home`
+
+The Hachiman `global` distrobox ini file is found at:
+`files/system/usr/share/hachiman/distrobox/distrobox.ini`
+
+This setup currently requires 2 environment variables that can be overridden in .bashrc, etc or
+if this repo is forked, can be modified in `files/system/etc/profile.d/hachiman.sh`:
+
+`HACHIMAN_DISTROBOX_INI`
+`HACHIMAN_DISTROBOX_HOME`
 
 ## Next Up
 
