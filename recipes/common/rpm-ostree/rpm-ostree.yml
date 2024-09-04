@@ -1,5 +1,6 @@
 type: rpm-ostree
 install:
+    - acpid
     - binutils
     - curl
     - distrobox
