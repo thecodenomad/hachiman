@@ -23,7 +23,7 @@ install:
     - podman-compose
     - podman-tui
     - python3-pip
-    #    - python-devel
+    - python-devel
     - samba
     - samba-dcerpc
     - samba-ldb-ldap-modules
