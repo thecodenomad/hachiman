@@ -21,7 +21,8 @@ env:
 jobs:
     bluebuild:
         name: Build Custom Image
-        runs-on: ubuntu-latest
+        #        runs-on: ubuntu-latest
+        runs-on: self-hosted
         permissions:
             contents: read
             packages: write
@@ -73,3 +74,18 @@ jobs:
                   if-no-files-found: error
                   retention-days: 0
                   compression-level: 0
+
+    # Push the image to custom registry
+    registry-push:
+        name: Push to custom registry
+        runs-on: self-hosted
+        steps:
+            - name: Push to Hoth
+              id: push-to-hoth
+              uses: redhat-actions/push-to-registry@v2
+              with:
+                  image: ${{ env.IMAGE_NAME }}
+                  tags: ${{ env.IMAGE_TAG }}
+                  registry: warchest.hoth:5000/autobot
+                  username: autobot
+                  password: ${{ secrets.REGISTRY_PASS }}
