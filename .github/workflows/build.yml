@@ -77,15 +77,14 @@ jobs:
 
     # Push the image to custom registry
     registry-push:
-        name: Push to custom registry
+        needs: bluebuild        
         runs-on: self-hosted
         steps:
-            - name: Push to Hoth
-              id: push-to-hoth
+            - name: Push to Custom Registry
               uses: redhat-actions/push-to-registry@v2
               with:
                   image: ${{ env.IMAGE_NAME }}
                   tags: ${{ env.IMAGE_TAG }}
-                  registry: warchest.hoth:5000/autobot
+                  registry: ${{ secrets.REGISTRY }}
                   username: autobot
                   password: ${{ secrets.REGISTRY_PASS }}
