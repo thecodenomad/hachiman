@@ -1,0 +1,35 @@
+name: Local Registry
+on:
+    schedule:
+        - cron:
+              "00 06 * * *" # build at 06:00 UTC every day
+              # (20 minutes after last ublue images start building)
+    push:
+        paths-ignore: # don't rebuild if only documentation has changed
+            - "**.md"
+
+    pull_request:
+    workflow_dispatch: # allow manually triggering builds
+env:
+    IMAGE_REPO: "ghcr.io/thecodenomad"
+    IMAGE_NAME: "hachiman"
+    IMAGE_TAG: "latest"
+    VERSION: "40"
+
+jobs:
+    # Push the image to custom registry
+    registry-push:
+        runs-on: self-hosted
+        steps:
+            - name: Pull the image
+              run: |
+                  docker pull ${IMAGE_REPO}/${IMAGE_NAME}:${IMAGE_TAG}
+            #                  docker tag ${IMAGE_REPO}/${IMAGE_NAME}:${IMAGE_TAG} ${secrets.REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG}
+            - name: Push to Custom Registry
+              uses: redhat-actions/push-to-registry@v2
+              with:
+                  image: ${{ env.IMAGE_NAME }}
+                  tags: ${{ env.IMAGE_TAG }}
+                  registry: ${{ secrets.REGISTRY }}
+                  username: ${{ secrets.REGISTRY_USER }}
+                  password: ${{ secrets.REGISTRY_PASS }}
