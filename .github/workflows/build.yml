@@ -47,6 +47,24 @@ jobs:
                   # enabled by default, disable if your image is small and you want faster builds
                   maximize_build_space: true
 
+            # Setup Tailscale
+            - name: Setup Tailscale
+              uses: tailscale/github-action@v2
+              with:
+                oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+                oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
+                tags: tag:ci
+              
+            # Push to Local Registry
+            - name: Push to Custom Registry
+              uses: redhat-actions/push-to-registry@v2
+              with:
+                  image: ${{ env.IMAGE_NAME }}
+                  tags: ${{ env.IMAGE_TAG }}
+                  registry: ${{ secrets.REGISTRY }}
+                  username: ${{ secrets.REGISTRY_USER }}
+                  password: ${{ secrets.REGISTRY_PASS }}
+
             # Build the ISO
             - name: Build ISO
               uses: jasonn3/build-container-installer@v1.2.2
