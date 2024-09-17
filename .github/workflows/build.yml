@@ -53,6 +53,7 @@ jobs:
               uses: tailscale/github-action@v2
               with:
                   authkey: ${{ secrets.TS_AUTH_KEY }}
+                  tags: "tag:nas-consumer"
 
             # Push to Local Registry
             # - name: Push to Custom Registry
