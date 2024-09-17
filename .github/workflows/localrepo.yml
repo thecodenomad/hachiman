@@ -21,9 +21,9 @@ jobs:
     registry-push:
         runs-on: self-hosted
         steps:
-            - name: Pull the image
-              run: |
-                  docker pull ${IMAGE_REPO}/${IMAGE_NAME}:${IMAGE_TAG}
+#            - name: Pull the image
+#              run: |
+#                  docker pull ${IMAGE_REPO}/${IMAGE_NAME}:${IMAGE_TAG}
             #                  docker tag ${IMAGE_REPO}/${IMAGE_NAME}:${IMAGE_TAG} ${secrets.REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG}
             - name: Push to Custom Registry
               uses: redhat-actions/push-to-registry@v2
