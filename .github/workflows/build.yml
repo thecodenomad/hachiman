@@ -1,4 +1,4 @@
-name: bluebuild
+name: build-hachiman
 on:
     schedule:
         - cron:
@@ -11,6 +11,7 @@ on:
     pull_request:
     workflow_dispatch: # allow manually triggering builds
 env:
+    IMAGE_NAME: "hachiman"
     IMAGE_REPO: "ghcr.io/thecodenomad"
     IMAGE_TAG: "latest"
     VERSION: "40"
@@ -51,8 +52,8 @@ jobs:
             - name: Setup Tailscale
               uses: tailscale/github-action@v2
               with:
-                authkey: ${{ secrets.TS_AUTH_KEY }}
-              
+                  authkey: ${{ secrets.TS_AUTH_KEY }}
+
             # Push to Local Registry
             - name: Push to Custom Registry
               uses: redhat-actions/push-to-registry@v2
