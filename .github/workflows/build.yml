@@ -48,29 +48,6 @@ jobs:
                   # enabled by default, disable if your image is small and you want faster builds
                   maximize_build_space: true
 
-            # Setup Tailscale
-            - name: Setup Tailscale
-              uses: tailscale/github-action@v2
-              with:
-                  authkey: ${{ secrets.TS_AUTH_KEY }}
-                  tags: "tag:nas-consumer"
-
-            # Push to Local Registry
-            # - name: Push to Custom Registry
-            #   uses: redhat-actions/push-to-registry@v2
-            #   with:
-            #       image: ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}
-            #       tags: ${{ env.IMAGE_TAG }}
-            #       registry: ${{ secrets.REGISTRY }}
-            #       username: ${{ secrets.REGISTRY_USER }}
-            #       password: ${{ secrets.REGISTRY_PASS }}
-
-            - name: Push to local registry
-              run: |
-                docker login -u="${{ secrets.REGISTRY_USER }}" --password-stdin ${{ secrets.REGISTRY }} << "${{ secrets.REGISTRY_PASS }}"
-                docker tag ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} ${{ secrets.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
-                docker push ${{ secrets.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
-
             # Build the ISO
             - name: Build ISO
               uses: jasonn3/build-container-installer@v1.2.2
