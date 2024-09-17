@@ -58,7 +58,7 @@ jobs:
             - name: Push to Custom Registry
               uses: redhat-actions/push-to-registry@v2
               with:
-                  image: ${{ env.IMAGE_NAME }}
+                  image: ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}
                   tags: ${{ env.IMAGE_TAG }}
                   registry: ${{ secrets.REGISTRY }}
                   username: ${{ secrets.REGISTRY_USER }}
