@@ -55,14 +55,20 @@ jobs:
                   authkey: ${{ secrets.TS_AUTH_KEY }}
 
             # Push to Local Registry
-            - name: Push to Custom Registry
-              uses: redhat-actions/push-to-registry@v2
-              with:
-                  image: ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}
-                  tags: ${{ env.IMAGE_TAG }}
-                  registry: ${{ secrets.REGISTRY }}
-                  username: ${{ secrets.REGISTRY_USER }}
-                  password: ${{ secrets.REGISTRY_PASS }}
+            # - name: Push to Custom Registry
+            #   uses: redhat-actions/push-to-registry@v2
+            #   with:
+            #       image: ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}
+            #       tags: ${{ env.IMAGE_TAG }}
+            #       registry: ${{ secrets.REGISTRY }}
+            #       username: ${{ secrets.REGISTRY_USER }}
+            #       password: ${{ secrets.REGISTRY_PASS }}
+
+            - name: Push to local registry
+              run: |
+                docker login -u="${{ secrets.REGISTRY_USER }}" -p="${{ secrets.REGISTRY_PASS }}" ${{ secrets.REGISTRY }}
+                docker tag ${{IMAGE_REPO}}/${{IMAGE_NAME}}:${IMAGE_TAG} ${REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG}
+                docker push ${REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG}
 
             # Build the ISO
             - name: Build ISO
