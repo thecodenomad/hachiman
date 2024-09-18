@@ -41,7 +41,23 @@ if this repo is forked, can be modified in `files/system/etc/profile.d/hachiman.
 `HACHIMAN_DISTROBOX_INI`
 `HACHIMAN_DISTROBOX_HOME`
 
-## Next Up
+# Building 
+
+## Generate the Recipe
+
+This is used to generate the goodies provided by the recipe.
+
+```bluebuild generate -d ./recipes/recipe.yml```
+
+## Build Locally
+
+```bluebuild build ./recipes/recipe.yml```
+
+## Switch to this OCI Image
+
+```bluebuild rebase ./recipes/recipe.yml```
+
+# Next Up
 
 TODOs:
 - Create roles for the following:

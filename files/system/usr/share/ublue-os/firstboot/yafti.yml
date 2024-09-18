@@ -18,7 +18,6 @@ screens:
                 run: flatpak remotes --columns=name | grep fedora
             description: |
                 This tool modifies your flatpaks and flatpak sources. If you do not want to do this exit the installer.
-                For new users just do it (tm)
             actions:
                 - run: flatpak remote-delete --system --force fedora
                 - run: flatpak remote-delete --user --force fedora
@@ -27,6 +26,32 @@ screens:
                 - run: flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
     applications:
         source: yafti.screen.package
+        pre:
+            # Core GNOME Apps
+            - yafti.plugin.flatpak:
+                  install:
+                      - org.gnome.Calculator
+                      - org.gnome.Characters
+                      - org.gnome.baobab
+                      - org.gnome.font-viewer
+                      - org.gnome.Logs
+                      - org.gnome.Maps
+                      - org.gnome.Photos
+                      - org.gnome.NautilusPreviewer
+                      - org.gnome.Weather
+                      # Hachiman Defaults
+                      - dev.geopjr.Collision
+                      - org.gnome.DejaDup
+                      - org.gnome.Extensions
+                      - com.mattjakeman.ExtensionManager
+                      - org.fedoraproject.MediaWriter
+                      - org.gustavoperedo.FontDownloader
+                      - org.gnome.Firmware
+                      - com.github.tchx84.Flatseal
+                      - org.gnome.Loupe
+                      - io.gitlab.librewolf-community
+                      - io.missioncenter.MissionCenter
+                      - app.devsuite.Ptyxis
         values:
             title: Application Installer
             show_terminal: true
@@ -35,39 +60,6 @@ screens:
                 user: true
                 system: false
             groups:
-                Core GNOME Apps:
-                    description: Core system applications for the GNOME desktop environment.
-                    default: true
-                    user: false
-                    system: true
-                    packages:
-                        - Calculator: org.gnome.Calculator
-                        - Characters: org.gnome.Characters
-                        - Disk Usage Analyzer: org.gnome.baobab
-                        - Font Viewer: org.gnome.font-viewer
-                        - Logs: org.gnome.Logs
-                        - Maps: org.gnome.Maps
-                        - Photos (Organizer): org.gnome.Photos
-                        - Sushi (Nautilus Previewer): org.gnome.NautilusPreviewer
-                        - Weather: org.gnome.Weather
-                Hachiman Base Apps:
-                    description: Base applications for all Hachiman roles
-                    default: true
-                    user: false
-                    system: true
-                    packages:
-                        - Collision: dev.geopjr.Collision
-                        - Deja Dup (Backup): org.gnome.DejaDup
-                        - Extensions: org.gnome.Extensions
-                        - Extension Manager: com.mattjakeman.ExtensionManager
-                        - Fedora Media Writer: org.fedoraproject.MediaWriter
-                        - Font Downloader: org.gustavoperedo.FontDownloader
-                        - Firmware: org.gnome.Firmware
-                        - Flatseal: com.github.tchx84.Flatseal
-                        - Image Viewer: org.gnome.Loupe
-                        - Librewolf (Browser): io.gitlab.librewolf-community
-                        - Mission Center: io.missioncenter.MissionCenter
-                        - Ptyxis (Terminal): app.devsuite.Ptyxis
                 Hachiman User Role:
                     description: Default user applications for all systems
                     default: true
@@ -112,6 +104,8 @@ screens:
                         - Graphs: se.sjoerd.Graphs
                         - Inkscape: org.inkscape.Inkscape
                         - OpenSCAD: org.openscad.OpenSCAD
+                        - Icon Library: org.gnome.design.IconLibrary
+                        - App Icon Preview: org.gnome.design.AppIconPreview
                 Hachiman Gamer Role:
                     description: Default Gamer Role Applications.
                     default: true
@@ -156,5 +150,7 @@ screens:
             links:
                 - "Install More Applications":
                       run: /usr/bin/gnome-software
+                - "Built on Universal Blue":
+                      run: /usr/bin/xdg-open https://universal-blue.org
             description: |
                 Thanks for being a warrior and using Hachiman!

@@ -52,3 +52,7 @@ establish-distrobox:
 sigtop:
     mkdir -p "${HACHIMAN_DISTROBOX_HOME}/sigtop-home"
     distrobox assemble create --file ${HACHIMAN_DISTROBOX_INI} --name sigtop --replace
+
+
+install_optimized_zed:
+    RUSTFLAGS='-C target-cpu=native' cargo build

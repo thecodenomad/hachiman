@@ -3,6 +3,7 @@ modules:
       install:
           - nautilus-python # Required for collision plugin
       remove:
+          # These will be installed via flatpak post install
           - gnome-classic-session-xsession
           - gnome-classic-session
           - firefox

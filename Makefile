@@ -9,7 +9,7 @@ build: clean
 	bluebuild generate -d ./recipes/recipe.yml
 	bluebuild build ./recipes/recipe.yml
 
-iso: build
+iso: #build
 	mkdir -p ${PWD}/iso-output
 	sudo podman run --rm --privileged \
 		--volume ${PWD}/iso-output:/build-container-installer/build \
