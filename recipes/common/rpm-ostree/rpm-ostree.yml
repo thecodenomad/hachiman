@@ -5,6 +5,7 @@ install:
     - curl
     - distrobox
     - dmidecode
+    - firewall-config
     - gcc
     - git
     - git-crypt
