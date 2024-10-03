@@ -72,6 +72,7 @@ screens:
                         - GNOME Conf Editor: ca.desrt.dconf-editor
                         - Jellyfin: com.github.iwalton3.jellyfin-media-player
                         - Obsidian: md.obsidian.Obsidian
+                        - Shredder: com.github.ADBeveridge.Raider
                         - Spotify: com.spotify.Client
                         - Spotify (OSS): dev.alextren.Spot
                 Hachiman Developer Role:
@@ -99,6 +100,7 @@ screens:
                         - VideoTrimmer: org.gnome.gitlab.YaLTeR.VideoTrimmer
                         - Shotcut: org.shotcut.Shotcut
                         - Clapper: com.github.rafostar.Clapper
+                        - Pipeline: de.schmidhuberj.tubefeeder
                         - OBS Studio: com.obsproject.Studio
                         - MakeMKV: com.makemkv.MakeMKV
                         - Graphs: se.sjoerd.Graphs
