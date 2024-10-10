@@ -25,6 +25,9 @@ install:
     - podman-tui
     - python3-pip
     - python-devel
+    - rocm-hip
+    - rocm-opencl
+    - rocm-smi
     - samba
     - samba-dcerpc
     - samba-ldb-ldap-modules
