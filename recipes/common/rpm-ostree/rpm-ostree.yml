@@ -5,7 +5,9 @@ install:
     - curl
     - distrobox
     - dmidecode
+    - fastfetch
     - firewall-config
+    - fish
     - gcc
     - git
     - git-crypt

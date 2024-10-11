@@ -10,48 +10,8 @@ screens:
             icon: "/usr/share/hachiman/hachiman-logo-square.svg"
             description: |
                 This is a guided installer meant to help setup your system.
-    can-we-modify-your-flatpaks:
-        source: yafti.screen.consent
-        values:
-            title: Welcome, Warrior!
-            condition:
-                run: flatpak remotes --columns=name | grep fedora
-            description: |
-                This tool modifies your flatpaks and flatpak sources. If you do not want to do this exit the installer.
-            actions:
-                - run: flatpak remote-delete --system --force fedora
-                - run: flatpak remote-delete --user --force fedora
-                - run: flatpak remove --system --noninteractive --all
-                - run: flatpak remote-add --if-not-exists --system flathub https://flathub.org/repo/flathub.flatpakrepo
-                - run: flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
     applications:
         source: yafti.screen.package
-        pre:
-            # Core GNOME Apps
-            - yafti.plugin.flatpak:
-                  install:
-                      - org.gnome.Calculator
-                      - org.gnome.Characters
-                      - org.gnome.baobab
-                      - org.gnome.font-viewer
-                      - org.gnome.Logs
-                      - org.gnome.Maps
-                      - org.gnome.Photos
-                      - org.gnome.NautilusPreviewer
-                      - org.gnome.Weather
-                      # Hachiman Defaults
-                      - dev.geopjr.Collision
-                      - org.gnome.DejaDup
-                      - org.gnome.Extensions
-                      - com.mattjakeman.ExtensionManager
-                      - org.fedoraproject.MediaWriter
-                      - org.gustavoperedo.FontDownloader
-                      - org.gnome.Firmware
-                      - com.github.tchx84.Flatseal
-                      - org.gnome.Loupe
-                      - io.gitlab.librewolf-community
-                      - io.missioncenter.MissionCenter
-                      - app.devsuite.Ptyxis
         values:
             title: Application Installer
             show_terminal: true

@@ -25,19 +25,9 @@ modules:
       include:
           - zz99-hachiman.gschema.override
 
-    - type: fonts
-      fonts:
-          nerd-fonts:
-              - FiraCode # don't add spaces or "Nerd Font" suffix.
-              - Hack
-              - SourceCodePro
-              - Terminus
-              - JetBrainsMono
-              - NerdFontsSymbolsOnly
-          google-fonts:
-              - Roboto
-              - Open Sans
-
+    # Fonts
+    - from-file: common/fonts.yml
+    
     # Setup Base Usage Role
     # The intent is to have a recipe per role with multiple roles to handle system
     # level applications.
