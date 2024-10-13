@@ -38,4 +38,5 @@ install:
     - samba-winbind-modules
     - vim
     - wget
+    - yq
     - yt-dlp
