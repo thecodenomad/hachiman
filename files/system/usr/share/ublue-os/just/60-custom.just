@@ -1,3 +1,5 @@
+# Ref: https://just.systems/man/en/
+
 ####################
 # Utility Commands #
 ####################
@@ -85,3 +87,10 @@ protonmail:
 thorium:
     mkdir -p "${HACHIMAN_DISTROBOX_HOME}/thorium-home"
     distrobox assemble create --file ${HACHIMAN_DISTROBOX_INI} --name proton-mail --replace
+
+
+##########################
+# Development Workspaces #
+##########################
+dev_workspaces:
+    create_workspaces.sh dev
