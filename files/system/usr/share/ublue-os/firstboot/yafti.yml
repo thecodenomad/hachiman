@@ -12,6 +12,35 @@ screens:
                 This is a guided installer meant to help setup your system.
     applications:
         source: yafti.screen.package
+        pre:
+            # Core GNOME Apps
+            # NOTE: When these are put into default-flatpaks, the first login freezes
+            #       not sure if this is a bug, of it's just requiring the flatpaks to be downloaded
+            #       at that time. If it's the latter, preferrence is for it to happen here.
+            - yafti.plugin.flatpak:
+                  install:
+                      - org.gnome.Calculator
+                      - org.gnome.Characters
+                      - org.gnome.baobab
+                      - org.gnome.font-viewer
+                      - org.gnome.Logs
+                      - org.gnome.Maps
+                      - org.gnome.Photos
+                      - org.gnome.NautilusPreviewer
+                      - org.gnome.Weather
+                      # Hachiman Defaults
+                      - dev.geopjr.Collision
+                      - org.gnome.DejaDup
+                      - org.gnome.Extensions
+                      - com.mattjakeman.ExtensionManager
+                      - org.fedoraproject.MediaWriter
+                      - org.gustavoperedo.FontDownloader
+                      - org.gnome.Firmware
+                      - com.github.tchx84.Flatseal
+                      - org.gnome.Loupe
+                      - io.gitlab.librewolf-community
+                      - io.missioncenter.MissionCenter
+                      - app.devsuite.Ptyxis
         values:
             title: Application Installer
             show_terminal: true
