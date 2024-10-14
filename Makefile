@@ -9,17 +9,21 @@ build: clean
 	bluebuild generate -d ./recipes/recipe.yml
 	bluebuild build ./recipes/recipe.yml
 
-iso: #build
+iso: build
 	mkdir -p ${PWD}/iso-output
 	sudo podman run --rm --privileged \
-		--volume ${PWD}/iso-output:/build-container-installer/build \
-		--security-opt label=disable \
-		--pull=newer ghcr.io/jasonn3/build-container-installer:latest \
-		IMAGE_REPO=${IMAGE_REPO} \
-		IMAGE_NAME=hachiman \
-		IMAGE_TAG=${IMAGE_TAG} \
-		VARIANT=Server \
-		VERSION=40
+			--volume ${PWD}/iso-output:/build-container-installer/build \
+			--security-opt label=disable \
+			--pull=newer ghcr.io/jasonn3/build-container-installer:latest \
+			IMAGE_REPO=${IMAGE_REPO} \
+			IMAGE_NAME=hachiman \
+			IMAGE_TAG=${IMAGE_TAG} \
+			VARIANT=Server \
+			VERSION=40
+	
+	# Change the permissions
+	echo "Change owner of iso to current user."
+	sudo chown ${USER}:${USER} ${PWD}/iso-output/*
 
 cosmic-build:
 	bluebuild generate -d ./recipes/recipe-cosmic.yml

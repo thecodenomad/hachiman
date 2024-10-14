@@ -10,24 +10,13 @@ screens:
             icon: "/usr/share/hachiman/hachiman-logo-square.svg"
             description: |
                 This is a guided installer meant to help setup your system.
-    can-we-modify-your-flatpaks:
-        source: yafti.screen.consent
-        values:
-            title: Welcome, Warrior!
-            condition:
-                run: flatpak remotes --columns=name | grep fedora
-            description: |
-                This tool modifies your flatpaks and flatpak sources. If you do not want to do this exit the installer.
-            actions:
-                - run: flatpak remote-delete --system --force fedora
-                - run: flatpak remote-delete --user --force fedora
-                - run: flatpak remove --system --noninteractive --all
-                - run: flatpak remote-add --if-not-exists --system flathub https://flathub.org/repo/flathub.flatpakrepo
-                - run: flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
     applications:
         source: yafti.screen.package
         pre:
             # Core GNOME Apps
+            # NOTE: When these are put into default-flatpaks, the first login freezes
+            #       not sure if this is a bug, of it's just requiring the flatpaks to be downloaded
+            #       at that time. If it's the latter, preferrence is for it to happen here.
             - yafti.plugin.flatpak:
                   install:
                       - org.gnome.Calculator
@@ -72,6 +61,7 @@ screens:
                         - GNOME Conf Editor: ca.desrt.dconf-editor
                         - Jellyfin: com.github.iwalton3.jellyfin-media-player
                         - Obsidian: md.obsidian.Obsidian
+                        - Shredder: com.github.ADBeveridge.Raider
                         - Spotify: com.spotify.Client
                         - Spotify (OSS): dev.alextren.Spot
                 Hachiman Developer Role:
@@ -99,20 +89,18 @@ screens:
                         - VideoTrimmer: org.gnome.gitlab.YaLTeR.VideoTrimmer
                         - Shotcut: org.shotcut.Shotcut
                         - Clapper: com.github.rafostar.Clapper
-                        - OBS Studio: com.obsproject.Studio
+                        - Pipeline: de.schmidhuberj.tubefeeder
                         - MakeMKV: com.makemkv.MakeMKV
                         - Graphs: se.sjoerd.Graphs
-                        - Inkscape: org.inkscape.Inkscape
-                        - OpenSCAD: org.openscad.OpenSCAD
                         - Icon Library: org.gnome.design.IconLibrary
                         - App Icon Preview: org.gnome.design.AppIconPreview
                 Hachiman Gamer Role:
                     description: Default Gamer Role Applications.
-                    default: true
+                    default: false
                     packages:
-                        #    - Bottles: com.usebottles.bottles
+                        - Bottles: com.usebottles.bottles
                         - Lutris: net.lutris.Lutris
-                        #    - Steam: com.valvesoftware.Steam
+                        - Steam: com.valvesoftware.Steam
                 Hachiman Office User Role:
                     description: Default Office Role Applications.
                     default: true
@@ -120,11 +108,9 @@ screens:
                         - Citations: org.gnome.World.Citations
                         - Document Viewer: org.gnome.Evince
                         - LibreOffice: org.libreoffice.LibreOffice
-                        #    - Kolibri Learning: org.learningequality.Kolibri
                         - Paperwork: work.openpaper.Paperwork
                         - Remmina: org.remmina.Remmina
                         - Simple Scan: org.gnome.SimpleScan
-                        #    - Thunderbird Email: org.mozilla.Thunderbird
                 Communication:
                     description: Communication tools for chatting, messaging, and more.
                     default: false
@@ -134,12 +120,12 @@ screens:
                         - Signal: org.signal.Signal
                 Additional Web Browsers:
                     description: Additional browsers to complement or replace Firefox.
-                    default: true
+                    default: false
                     packages:
-                        # - Brave: com.brave.Browser
+                        - Brave: com.brave.Browser
                         - Chromium: org.chromium.Chromium
-                        # - Firefox: org.mozilla.firefox
-                        # - Microsoft Edge: com.microsoft.Edge
+                        - Firefox: org.mozilla.firefox
+                        - Microsoft Edge: com.microsoft.Edge
                         - GNOME Web: org.gnome.Epiphany
 
     final-screen:

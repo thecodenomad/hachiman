@@ -1,10 +1,14 @@
 type: rpm-ostree
 install:
     - acpid
+    - age
     - binutils
     - curl
     - distrobox
     - dmidecode
+    - fastfetch
+    - firewall-config
+    - fish
     - gcc
     - git
     - git-crypt
@@ -24,6 +28,9 @@ install:
     - podman-tui
     - python3-pip
     - python-devel
+    - rocm-hip
+    - rocm-opencl
+    - rocm-smi
     - samba
     - samba-dcerpc
     - samba-ldb-ldap-modules
@@ -31,4 +38,5 @@ install:
     - samba-winbind-modules
     - vim
     - wget
+    - yq
     - yt-dlp

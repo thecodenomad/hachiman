@@ -16,13 +16,13 @@ regardless of any established roles.
 
 ## Project Opinions
 
-| Opinion | Minimum | Preferred | Current Status |
-| --- | --- | --- | --- |
-| VPN | OpenVPN | OpenVPN, ProtonVPN, Tailscale | Done |
-| User Config Management | chezmoi | - | Partial |
-| System Config Management | bluebuild files | - | Done |
-| Default GUI Apps | flatpak | - | Done |
-| Dev environments | distrobox | - | Done |
+| Opinion                  | Minimum         | Preferred                     | Current Status |
+| ------------------------ | --------------- | ----------------------------- | -------------- |
+| VPN                      | OpenVPN         | OpenVPN, ProtonVPN, Tailscale | Done           |
+| User Config Management   | chezmoi         | -                             | Partial        |
+| System Config Management | bluebuild files | -                             | Done           |
+| Default GUI Apps         | flatpak         | -                             | Done           |
+| Dev environments         | distrobox       | -                             | Done           |
 
 ## Opinionated Distrobox Configuration
 
@@ -41,32 +41,40 @@ if this repo is forked, can be modified in `files/system/etc/profile.d/hachiman.
 `HACHIMAN_DISTROBOX_INI`
 `HACHIMAN_DISTROBOX_HOME`
 
-# Building 
+# Building
 
 ## Generate the Recipe
 
 This is used to generate the goodies provided by the recipe.
 
-```bluebuild generate -d ./recipes/recipe.yml```
+`bluebuild generate -d ./recipes/recipe.yml`
 
 ## Build Locally
 
-```bluebuild build ./recipes/recipe.yml```
+`bluebuild build ./recipes/recipe.yml`
 
 ## Switch to this OCI Image
 
-```bluebuild rebase ./recipes/recipe.yml```
+`bluebuild rebase ./recipes/recipe.yml`
+
+## Workspaces
+
+Hachiman has a few scripts that help maintain a users development workspaces. The goal is to
+quickly get a development environment up on a fresh install with little effort. Chezmoi is used
+to retrieve dotfiles, within those dot files should be a yaml configuration file that points
+to workspaces that should be created. See the system workspaces as an example.
 
 # Next Up
 
 TODOs:
-- Create roles for the following:
-  - Server role - Installs the basics for setting up a homelab server
-  - Developer role - Installs the basics for my preferred development environment regardless of DE.
-- Move non-global configuration files to chezmoi
-- Dev environment in base system, or integrated with distrobox
-- Github Runner
-  - setup to upload container images to local docker repo
-  - setup to upload current ISO and shas to local SMB backup
-- Continued organization
-  - recipes/common/rpm-ostree/<DE>-base.yml - Applications/utilities that should be added/removed for a given DE
+
+-   Create roles for the following:
+    -   Server role - Installs the basics for setting up a homelab server
+    -   Developer role - Installs the basics for my preferred development environment regardless of DE.
+-   Move non-global configuration files to chezmoi
+-   Dev environment in base system, or integrated with distrobox
+-   Github Runner
+    -   setup to upload container images to local docker repo
+    -   setup to upload current ISO and shas to local SMB backup
+-   Continued organization
+    -   recipes/common/rpm-ostree/<DE>-base.yml - Applications/utilities that should be added/removed for a given DE

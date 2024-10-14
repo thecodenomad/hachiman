@@ -1,3 +1,5 @@
+# Ref: https://just.systems/man/en/
+
 ####################
 # Utility Commands #
 ####################
@@ -32,6 +34,19 @@ nautilus-collision:
 upgrade-hachiman:
     rpm-ostree rebase ostree-image-signed:docker://ghcr.io/thecodenomad/hachiman:latest
 
+
+# Helpers to verify ssh fingerprints
+
+ed25519-ssh-key:
+    ssh-keygen -lf /etc/ssh/ssh_host_ed25519_key.pub
+
+ecdsa-ssh-key
+    ssh-keygen -lf /etc/ssh/ssh_host_ecdsa_key.pub
+
+rsa-ssh-key
+    ssh-keygen -lf /etc/ssh/ssh_host_rsa_key.pub
+
+
 #####################
 # Distrobox Tooling #
 #####################
@@ -56,3 +71,26 @@ sigtop:
 
 install_optimized_zed:
     RUSTFLAGS='-C target-cpu=native' cargo build
+
+
+################
+# Applications #
+################
+# NOTE: The whole intent is to keep these applications restricted into their own home space
+#       to avoid muddying the main local configs. These will gradually move as they are vetted
+#       in workflows
+
+protonmail:
+    mkdir -p "${HACHIMAN_DISTROBOX_HOME}/proton-mail-home"
+    distrobox assemble create --file ${HACHIMAN_DISTROBOX_INI} --name thorium-box --replace
+
+thorium:
+    mkdir -p "${HACHIMAN_DISTROBOX_HOME}/thorium-home"
+    distrobox assemble create --file ${HACHIMAN_DISTROBOX_INI} --name proton-mail --replace
+
+
+##########################
+# Development Workspaces #
+##########################
+dev_workspaces:
+    create_workspaces.sh dev

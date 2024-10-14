@@ -1,0 +1,17 @@
+# https://www.nerdfonts.com/
+type: fonts
+fonts:
+    nerd-fonts:
+        # don't add spaces or "Nerd Font" suffix.
+        - CascadiaCode
+        - CascadiaMono
+        - FiraCode
+        - Hack
+        - Meslo
+        - SourceCodePro
+        - Terminus
+        - JetBrainsMono
+        - NerdFontsSymbolsOnly
+    google-fonts:
+        - Roboto
+        - Open Sans
