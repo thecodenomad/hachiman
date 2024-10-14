@@ -10,6 +10,30 @@ screens:
             icon: "/usr/share/hachiman/hachiman-logo-square.svg"
             description: |
                 This is a guided installer meant to help setup your system.
+    modify-system-flatpaks:
+        source: yafti.screen.consent
+        values:
+            title: Modify System Flatpaks
+            condition:
+                run: flatpak remotes --columns=name | grep fedora
+            description: |
+                This will replace the Fedora repo with flathub for all system level flatpaks
+            actions:
+                - run: flatpak remote-delete --system --force fedora
+                - run: flatpak remove --system --noninteractive --all
+                - run: flatpak remote-add --if-not-exists --system flathub https://flathub.org/repo/flathub.flatpakrepo
+    modify-user-flatpaks:
+        source: yafti.screen.consent
+        values:
+            title: Modify User Flatpaks
+            condition:
+                run: flatpak remotes --columns=name | grep fedora
+            description: |
+                This will replace the Fedora repo with flathub for all user level flatpaks
+            actions:
+                - run: flatpak remote-delete --user --force fedora
+                - run: flatpak remove --system --noninteractive --all
+                - run: flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
     applications:
         source: yafti.screen.package
         pre:
