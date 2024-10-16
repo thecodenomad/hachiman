@@ -40,10 +40,10 @@ upgrade-hachiman:
 ed25519-ssh-key:
     ssh-keygen -lf /etc/ssh/ssh_host_ed25519_key.pub
 
-ecdsa-ssh-key
+ecdsa-ssh-key:
     ssh-keygen -lf /etc/ssh/ssh_host_ecdsa_key.pub
 
-rsa-ssh-key
+rsa-ssh-key:
     ssh-keygen -lf /etc/ssh/ssh_host_rsa_key.pub
 
 
