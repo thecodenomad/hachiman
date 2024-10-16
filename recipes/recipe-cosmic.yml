@@ -19,23 +19,10 @@ modules:
 
     - from-file: common/rpm-ostree/rpm-ostree.yml
 
-    # Setup Cosmic Customizations
-    # - type: gschema-overrides
-    #   include:
-    #       - zz99-hachiman.gschema.override
+    # Setup Cosmic Customizations if any
 
-    - type: fonts
-      fonts:
-          nerd-fonts:
-              - FiraCode # don't add spaces or "Nerd Font" suffix.
-              - Hack
-              - SourceCodePro
-              - Terminus
-              - JetBrainsMono
-              - NerdFontsSymbolsOnly
-          google-fonts:
-              - Roboto
-              - Open Sans
+    # Fonts
+    - from-file: common/fonts.yml
 
     # Setup Base Usage Role
     # The intent is to have a recipe per role with multiple roles to handle system
@@ -48,8 +35,6 @@ modules:
     - type: akmods
       base: main # if not specified, classic "main" base is used by default
       install:
-          - framework-laptop
-          - ryzen-smu
           - v4l2loopback
 
     - type: systemd

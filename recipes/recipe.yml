@@ -27,7 +27,7 @@ modules:
 
     # Fonts
     - from-file: common/fonts.yml
-    
+
     # Setup Base Usage Role
     # The intent is to have a recipe per role with multiple roles to handle system
     # level applications.

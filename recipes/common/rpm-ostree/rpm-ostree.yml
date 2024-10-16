@@ -3,6 +3,8 @@ install:
     - acpid
     - age
     - binutils
+    - clamav
+    - clamav-freshclam
     - curl
     - distrobox
     - dmidecode
@@ -29,6 +31,7 @@ install:
     - podman-tui
     - python3-pip
     - python-devel
+    - rkhunter
     - rocm-hip
     - rocm-opencl
     - rocm-smi

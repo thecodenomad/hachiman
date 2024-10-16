@@ -34,17 +34,17 @@ nautilus-collision:
 upgrade-hachiman:
     rpm-ostree rebase ostree-image-signed:docker://ghcr.io/thecodenomad/hachiman:latest
 
-
-# Helpers to verify ssh fingerprints
-
+# Retrieve host public ed25519 key
 ed25519-ssh-key:
-    ssh-keygen -lf /etc/ssh/ssh_host_ed25519_key.pub
+    [[ -e /etc/ssh/ssh_host_ed25519_key.pub ]] && ssh-keygen -lf /etc/ssh/ssh_host_ed25519_key.pub || @echo "Not Found! /etc/ssh/ssh_host_ed25519_key.pub"
 
+# Retrieve host public ecdsa ssh key
 ecdsa-ssh-key:
-    ssh-keygen -lf /etc/ssh/ssh_host_ecdsa_key.pub
+    [[ -e /etc/ssh/ssh_host_ecdsa_key.pub ]] && ssh-keygen -lf /etc/ssh/ssh_host_ecdsa_key.pub || @echo "Not Found! /etc/ssh/ssh_host_ecdsa_key.pub"
 
+# Retrieve host public rsa ssh key
 rsa-ssh-key:
-    ssh-keygen -lf /etc/ssh/ssh_host_rsa_key.pub
+    [[ -e /etc/ssh/ssh_host_rsa_key.pub ]] && ssh-keygen -lf /etc/ssh/ssh_host_rsa_key.pub || @echo "Not Found! /etc/ssh/ssh_host_rsa_key.pub"
 
 
 #####################
@@ -68,11 +68,6 @@ sigtop:
     mkdir -p "${HACHIMAN_DISTROBOX_HOME}/sigtop-home"
     distrobox assemble create --file ${HACHIMAN_DISTROBOX_INI} --name sigtop --replace
 
-
-install_optimized_zed:
-    RUSTFLAGS='-C target-cpu=native' cargo build
-
-
 ################
 # Applications #
 ################
@@ -82,12 +77,11 @@ install_optimized_zed:
 
 protonmail:
     mkdir -p "${HACHIMAN_DISTROBOX_HOME}/proton-mail-home"
-    distrobox assemble create --file ${HACHIMAN_DISTROBOX_INI} --name thorium-box --replace
+    distrobox assemble create --file ${HACHIMAN_DISTROBOX_INI} --name proton-mail --replace
 
 thorium:
     mkdir -p "${HACHIMAN_DISTROBOX_HOME}/thorium-home"
-    distrobox assemble create --file ${HACHIMAN_DISTROBOX_INI} --name proton-mail --replace
-
+    distrobox assemble create --file ${HACHIMAN_DISTROBOX_INI} --name thorium-box --replace
 
 ##########################
 # Development Workspaces #
