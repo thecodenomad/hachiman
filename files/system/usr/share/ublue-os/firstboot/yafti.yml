@@ -150,7 +150,16 @@ screens:
                         - Firefox: org.mozilla.firefox
                         - Microsoft Edge: com.microsoft.Edge
                         - GNOME Web: org.gnome.Epiphany
-
+    # TODO: Make this optional
+    copy-starship-config:
+        source: yafti.screen.consent
+        values:
+            title: Copy Hachiman Starship Config
+            description: |
+                Copy over the default starship config from Hachiman
+            actions:
+                - run: mkdir -p ${HOME}/.config
+                - run: cp /usr/share/hachiman/starship.toml > ${HOME}/.config/starship.toml
     final-screen:
         source: yafti.screen.title
         values:

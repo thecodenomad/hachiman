@@ -1,0 +1,182 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+[╭─](color_arrow)\
+[](color_p1_bg)\
+$os\
+$username\
+[](fg:color_p1_bg bg:color_p2_bg)\
+$directory\
+[](fg:color_p2_bg bg:color_p3_bg)\
+$container\
+[](fg:color_p3_bg bg:color_p4_bg)\
+$python\
+$rust\
+$golang\
+[](fg:color_p4_bg bg:color_p5_bg)\
+$git_branch\
+$git_status\
+[](fg:color_p5_bg)
+[╰─$time>](bold color_time) 
+"""
+
+#################
+# Palette Setup #
+#################
+
+palette = 'hachiman-alt'
+
+##########################################################
+# Reference                                              #
+# [pill 1]      [pill 2]    [pill 3]   [pill 4] [pill 5] #
+# [os username] [directory] [language] [docker] [git]    #
+##########################################################
+
+[palettes.hachiman]
+# Root User
+color_root_bg = "#e07473"
+color_root_fg = "#504b55"
+# First Pill - os/username
+color_p1_bg = "#e07473"
+color_p1_fg = "#504b55"
+# Second Pill - directory
+color_p2_fg = "#48484C"
+color_p2_bg = "#DB4C4C"
+# Third Pill - language
+color_p3_bg = "#894C4D"
+color_p3_fg = "#D2BBAD"
+# Fourth Pill - docker
+color_p4_bg = "#504b55"
+color_p4_fg = "#e07473"
+# Final Pill - git
+color_p5_fg = "#e07473"
+color_p5_bg = "#867474"
+# Prompt
+color_arrow = "#e07473"
+color_time = "#e07473"
+
+[palettes.hachiman-alt]
+# Root User
+color_root_bg = "#e07473"
+color_root_fg = "#504b55"
+# First Pill - os/username
+color_p1_fg = "#3A3233"
+color_p1_bg = "#7B757C"
+# Second Pill - directory
+color_p2_fg = "#3A3233"
+color_p2_bg = "#585A60"
+# Third Pill - language
+color_p3_fg = "#3A3233"
+color_p3_bg = "#636977"
+# Fourth Pill - docker
+color_p4_fg = "#3A3233"
+color_p4_bg = "#494B55"
+# Final Pill - git
+color_p5_fg = "#9399A4"
+color_p5_bg = "#201C13"
+# Prompt
+color_arrow = "#7B757C"
+color_time = "#7B757C"
+
+##########
+# Pill 1 #
+##########
+[os]
+disabled = false
+style = "bg:color_p1_bg fg:color_p1_fg"
+
+[os.symbols]
+Windows = "󰍲"
+Ubuntu = "󰕈"
+SUSE = ""
+Raspbian = "󰐿"
+Mint = "󰣭"
+Macos = "󰀵"
+Manjaro = ""
+Linux = "󰌽"
+Gentoo = "󰣨"
+Fedora = "󰣛"
+Alpine = ""
+Amazon = ""
+Android = ""
+Arch = "󰣇"
+Artix = "󰣇"
+EndeavourOS = ""
+CentOS = ""
+Debian = "󰣚"
+Redhat = "󱄛"
+RedHatEnterprise = "󱄛"
+
+[username]
+show_always = true
+style_user = "bg:color_p1_bg fg:color_p1_fg"
+style_root = "bg:color_root_bg fg:color_root_fg"
+format = '[ $user ]($style)'
+
+##########
+# Pill 2 #
+##########
+[directory]
+home_symbol = "~"
+style = "fg:color_p2_fg bg:color_p2_bg"
+format = "[ $path ](fg:color_p2_fg bg:color_p2_bg)($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = "󰝚 "
+"Pictures" = " "
+"Developer" = "󰲋 "
+
+##########
+# Pill 3 #
+##########
+[container]
+symbol = "⬢"
+style = "bg:color_p3_bg"
+format = '[[ $symbol( $name) ](fg:color_p3_fg bg:color_p3_bg)]($style)'
+
+##########
+# Pill 4 #
+##########
+[rust]
+symbol = ""
+style = "bg:color_p4_bg"
+format = '[[ $symbol( $version) ](fg:color_p4_fg bg:color_p4_bg)]($style)'
+
+[golang]
+symbol = ""
+style = "bg:color_p4_bg"
+format = '[[ $symbol( $version) ](fg:color_p4_fg bg:color_p4_bg)]($style)'
+
+[python]
+symbol = ""
+style = "bg:color_p4_bg"
+format = '[[ $symbol( $version) ](fg:color_p4_fg bg:color_p4_bg)]($style)'
+
+##########
+# Pill 5 #
+##########
+[git_branch]
+symbol = "🌱"
+style = "bg:color_p5_bg"
+format = '[[ $symbol $branch ](fg:color_p5_fg bg:color_p5_bg)]($style)'
+
+[git_status]
+modified = '🪖'
+style = "bg:color_p5_bg"
+format = '[[($all_status$ahead_behind) ](fg:color_p5_fg bg:color_p5_bg)]($style)'
+
+##########
+# Prompt #
+##########
+[time]
+disabled = false
+time_format = "%R"
+style = "color_time"
+format = '[ $time ]($style)'
+
+[line_break]
+disabled = false

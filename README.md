@@ -7,27 +7,23 @@ This includes my preferred GNOME settings, and default apps. The few base binari
 Disclaimer: There are plenty of rough edges around this, so if you choose to install do so via the ISO and don't
 blame me if your cat catches fire or if your partner runs away with a delivery person.
 
-## Bluebuild Recipe Descriptions
+I'm a sucker for distro hopping, and it becomes annoying to have to setup everything over and over again to get
+to my preferred development box. Sure, I could use a VM, but I want to see how distros work on my main work machine
+(my Framework laptop). The intention of Hachiman is to go from no-OS to development of personal/work projects, on any computer,
+as quickly as possible without loads of additional dependencies or infrastructure (ansible, etc).
 
-`recipes/common/rpm-ostree/rpm-ostree.yml` - Contains all cli binaries installed regardless of DE. This should work
-regardless of any established roles.
+Silverblue + yafti + Chezmoi fits the need pretty solidly as I can create an installable ISO very easily thanks
+to [Bluebuild](https://blue-build.org/) and [Universal Blue](https://universal-blue.org/) infrastructure (you guys rock!!)
 
-`recipes/roles/laptop-user.yml` - This is my main user, everything I need to setup a new laptop with my preferences.
+# Oddities
 
-## Project Opinions
-
-| Opinion                  | Minimum         | Preferred                     | Current Status |
-| ------------------------ | --------------- | ----------------------------- | -------------- |
-| VPN                      | OpenVPN         | OpenVPN, ProtonVPN, Tailscale | Done           |
-| User Config Management   | chezmoi         | -                             | Partial        |
-| System Config Management | bluebuild files | -                             | Done           |
-| Default GUI Apps         | flatpak         | -                             | Done           |
-| Dev environments         | distrobox       | -                             | Done           |
+Yep, I know some of this is weird. I'm experimenting, and likely these opinions will change drastically.
 
 ## Opinionated Distrobox Configuration
 
 Go and Rust libraries can get unwieldy, so local dev environments will use dedicated home directories to
-to keep libraries from cluttering the home folder.
+to keep libraries from cluttering the home folder. This may change depending on level of pain. The idea is to have
+one folder that can deleted safely knowing it will be recreated by whatever project is being worked on.
 
 The distrobox home folders follow this convention:
 `home=${HACHIMAN_DISTROBOX_HOME}/<distrobox name>-home`
@@ -56,6 +52,10 @@ This is used to generate the goodies provided by the recipe.
 ## Switch to this OCI Image
 
 `bluebuild rebase ./recipes/recipe.yml`
+
+## Makefile
+
+Or just use the makefile, though ymmv.
 
 ## Installation
 
@@ -91,15 +91,4 @@ to workspaces that should be created. See the system workspaces as an example.
 
 # Next Up
 
-TODOs:
-
--   Create roles for the following:
-    -   Server role - Installs the basics for setting up a homelab server
-    -   Developer role - Installs the basics for my preferred development environment regardless of DE.
--   Move non-global configuration files to chezmoi
--   Dev environment in base system, or integrated with distrobox
--   Github Runner
-    -   setup to upload container images to local docker repo
-    -   setup to upload current ISO and shas to local SMB backup
--   Continued organization
-    -   recipes/common/rpm-ostree/<DE>-base.yml - Applications/utilities that should be added/removed for a given DE
+Just tweaks and fixes, nothing big left atm.
