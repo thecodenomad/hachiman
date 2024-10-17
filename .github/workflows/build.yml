@@ -66,6 +66,8 @@ jobs:
             - name: Upload ISO as artifact
               id: upload
               uses: actions/upload-artifact@v4
+              env:
+                  IMAGE_NAME: ${{ matrix.recipe == 'recipe-cosmic.yml' && 'cosmic-hachiman' || 'hachiman' }}              
               with:
                   name: ${{ env.IMAGE_NAME }}-${{ env.IMAGE_TAG }}-${{ env.VERSION }}
                   path: |
