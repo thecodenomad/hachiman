@@ -111,6 +111,7 @@ screens:
                         - VideoTrimmer: org.gnome.gitlab.YaLTeR.VideoTrimmer
                         - Shotcut: org.shotcut.Shotcut
                         - Clapper: com.github.rafostar.Clapper
+                        - Paleta: io.github.nate_xyz.Paleta
                         - Pipeline: de.schmidhuberj.tubefeeder
                         - MakeMKV: com.makemkv.MakeMKV
                         - Graphs: se.sjoerd.Graphs
