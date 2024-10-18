@@ -71,6 +71,7 @@ sigtop:
 ################
 # Applications #
 ################
+
 # NOTE: The whole intent is to keep these applications restricted into their own home space
 #       to avoid muddying the main local configs. These will gradually move as they are vetted
 #       in workflows
@@ -86,5 +87,13 @@ thorium:
 ##########################
 # Development Workspaces #
 ##########################
+
+# Create dev workspaces
 dev_workspaces:
     create_workspaces.sh dev
+
+# Set default starship config
+starship:
+    mkdir -p ${HOM}E/.config
+    cat /usr/share/hachiman/starship.toml >> ${HOME}/.config/starship.toml
+    echo 'eval "$(starship init bash)"' >> ${HOME}/.bashrc
