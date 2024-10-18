@@ -159,7 +159,8 @@ screens:
                 Copy over the default starship config from Hachiman
             actions:
                 - run: mkdir -p ${HOME}/.config
-                - run: cp /usr/share/hachiman/starship.toml > ${HOME}/.config/starship.toml
+                - run: cp /usr/share/hachiman/starship.toml ${HOME}/.config/starship.toml
+                - run: echo 'eval "$(starship init bash)"' >> ${HOME}/.bashrc
     final-screen:
         source: yafti.screen.title
         values:
