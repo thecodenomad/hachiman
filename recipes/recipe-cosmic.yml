@@ -18,6 +18,7 @@ modules:
             destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
 
     - from-file: common/rpm-ostree/rpm-ostree.yml
+    - from-file: common/rpm-ostree/gnome-base.yml
 
     # Setup Cosmic Customizations if any
 
@@ -42,6 +43,8 @@ modules:
           enabled:
               # Framework AMD laptop requires PPD over TLP.
               - power-profiles-daemon.service
+              - acpid.service
+              - firewalld.service
           masked:
               - tlp.service
       user:

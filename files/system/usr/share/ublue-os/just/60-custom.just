@@ -94,6 +94,6 @@ dev_workspaces:
 
 # Set default starship config
 starship:
-    mkdir -p ${HOM}E/.config
+    mkdir -p ${HOME}/.config
     cat /usr/share/hachiman/starship.toml >> ${HOME}/.config/starship.toml
     echo 'eval "$(starship init bash)"' >> ${HOME}/.bashrc
