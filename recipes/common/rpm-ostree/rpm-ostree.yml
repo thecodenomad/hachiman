@@ -5,6 +5,7 @@ install:
     - binutils
     - clamav
     - clamav-freshclam
+    - cmake
     - curl
     - distrobox
     - dmidecode
@@ -41,6 +42,8 @@ install:
     - samba-winbind-clients
     - samba-winbind-modules
     - vim
+    - vkmark
+    - vulkan-tools
     - wget
     - yq
     - yt-dlp
