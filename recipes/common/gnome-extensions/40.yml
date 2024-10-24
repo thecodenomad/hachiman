@@ -1,7 +1,0 @@
-# Ref: https://github.com/jitcos/cabos/blob/main/recipes/common_modules/gnome-extensions/40.yml
-type: gnome-extensions
-install:
-    - Dash to Dock
-    - PaperWM
-    - spotify-tray
-    - Tailscale Status

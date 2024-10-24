@@ -4,6 +4,7 @@ modules:
           - nautilus-python # Required for collision plugin
       remove:
           # These will be installed via flatpak post install
+          - gnome-classic-session-xsession
           - gnome-classic-session
           - firefox
           - firefox-langpacks
@@ -16,21 +17,3 @@ modules:
           - gnome-shell-extension-places-menu
           - gnome-shell-extension-window-list
           - gnome-shell-extension-background-logo
-
-    # Install Upstream RPMS
-    # TODO: Switch to homebrew? Ughhhh....
-    - type: rpm-ostree
-      install:
-          # Maintain dotfiles
-          - https://github.com/twpayne/chezmoi/releases/download/v2.52.4/chezmoi-2.52.4-x86_64.rpm
-
-    # Install Starship
-    - type: rpm-ostree
-      repos:
-          # when including COPR repos, use the %OS_VERSION% magic string
-          - https://copr.fedorainfracloud.org/coprs/atim/starship/repo/fedora-%OS_VERSION%/atim-starship-fedora-%OS_VERSION%.repo
-      install:
-          - starship
-
-    # Default Extensions
-    - from-file: common/gnome-extensions/40.yml
