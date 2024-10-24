@@ -25,9 +25,6 @@ modules:
       install:
           - starship
 
-    # Default Extensions
-    - from-file: common/gnome-extensions/40.yml
-
     # Gnome Extensions
     - type: gnome-extensions
       install:
