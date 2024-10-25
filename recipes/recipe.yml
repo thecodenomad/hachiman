@@ -36,7 +36,7 @@ modules:
     # TODO: Can kernel be swapped out? Would like cachy kernel, how could this
     # akmods repo be modified to support the copr release of cachy kernel?
     - type: akmods
-      base: main # if not specified, classic "main" base is used by default
+      base: main-41 # if not specified, classic "main" base is used by default
       install:
           - v4l2loopback
           # TODO: look into using different repo to support codename=phoenix
