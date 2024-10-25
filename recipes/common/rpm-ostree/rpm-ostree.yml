@@ -31,6 +31,7 @@ install:
     - podman
     - podman-compose
     - podman-tui
+    - power-profiles-daemon
     - python3-pip
     - python-devel
     - rkhunter
