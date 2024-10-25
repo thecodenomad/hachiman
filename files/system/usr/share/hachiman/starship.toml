@@ -17,7 +17,7 @@ $golang\
 $git_branch\
 $git_status\
 [](fg:color_p5_bg)
-[╰─$time>](bold color_time) 
+[╰─$time$battery>](bold color_time) 
 """
 
 #################
@@ -75,8 +75,12 @@ color_p4_bg = "#494B55"
 color_p5_fg = "#9399A4"
 color_p5_bg = "#201C13"
 # Prompt
-color_arrow = "#7B757C"
-color_time = "#7B757C"
+#color_arrow = "#7B757C"
+#color_time = "#7B757C"
+#color_light_text = "#C4BCB7"
+color_light_text = "#DB4C4C"
+color_arrow = "#DB4C4C"
+color_time = "#DB4C4C"
 
 ##########
 # Pill 1 #
@@ -118,8 +122,9 @@ format = '[ $user ]($style)'
 ##########
 [directory]
 home_symbol = "~"
-style = "fg:color_p2_fg bg:color_p2_bg"
-format = "[ $path ](fg:color_p2_fg bg:color_p2_bg)($style)"
+#style = "fg:color_p2_fg bg:color_p2_bg"
+style = "fg:color_light_text bg:color_p2_bg"
+format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
 
@@ -135,26 +140,26 @@ truncation_symbol = "…/"
 ##########
 [container]
 symbol = "⬢"
-style = "bg:color_p3_bg"
-format = '[[ $symbol( $name) ](fg:color_p3_fg bg:color_p3_bg)]($style)'
+style = "fg:color_p3_fg bg:color_p3_bg"
+format = '[ $symbol( $name) ]($style)'
 
 ##########
 # Pill 4 #
 ##########
 [rust]
 symbol = ""
-style = "bg:color_p4_bg"
-format = '[[ $symbol( $version) ](fg:color_p4_fg bg:color_p4_bg)]($style)'
+style = "fg:color_light_text bg:color_p4_bg"
+format = '[ $symbol( $version) ]($style)'
 
 [golang]
 symbol = ""
-style = "bg:color_p4_bg"
-format = '[[ $symbol( $version) ](fg:color_p4_fg bg:color_p4_bg)]($style)'
+style = "fg:color_light_text bg:color_p4_bg"
+format = '[ $symbol( $version) ]($style)'
 
 [python]
 symbol = ""
-style = "bg:color_p4_bg"
-format = '[[ $symbol( $version) ](fg:color_p4_fg bg:color_p4_bg)]($style)'
+style = "fg:color_light_text bg:color_p4_bg"
+format = '[ $symbol( $version) ]($style)'
 
 ##########
 # Pill 5 #
@@ -177,6 +182,17 @@ disabled = false
 time_format = "%R"
 style = "color_time"
 format = '[ $time ]($style)'
+
+[battery]
+format = '[$symbol]($style)'
+
+[[battery.display]]
+threshold = 10
+style = 'bold red'
+
+[[battery.display]] 
+threshold = 25
+style = 'bold yellow'
 
 [line_break]
 disabled = false
