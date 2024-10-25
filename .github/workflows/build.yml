@@ -33,7 +33,7 @@ jobs:
                 recipe:
                     # !! Add your recipes here
                     - recipe.yml
-                    - recipe-cosmic.yml
+#                    - recipe-cosmic.yml # Cosmic doesn't have a build yet
 
         steps:
             # the build is fully handled by the reusable github action
