@@ -48,7 +48,7 @@ modules:
       system:
           enabled:
               # Framework AMD laptop requires PPD over TLP.
-              - power-profiles-daemon.service
+              - tuned-ppd.service
               - acpid.service
               - firewalld.service
           masked:
