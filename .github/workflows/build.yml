@@ -7,7 +7,8 @@ on:
     push:
         paths-ignore: # don't rebuild if only documentation has changed
             - "**.md"
-
+        branches:
+            - main
     pull_request:
     workflow_dispatch: # allow manually triggering builds
 env:
