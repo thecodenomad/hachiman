@@ -7,14 +7,15 @@ on:
     push:
         paths-ignore: # don't rebuild if only documentation has changed
             - "**.md"
-
+        branches:
+            - main
     pull_request:
     workflow_dispatch: # allow manually triggering builds
 env:
     IMAGE_NAME: "hachiman"
     IMAGE_REPO: "ghcr.io/thecodenomad"
     IMAGE_TAG: "latest"
-    VERSION: "40"
+    VERSION: "41"
     # Ref: https://github.com/JasonN3/build-container-installer/issues/110
     # "Silverblue" doesn't provide user configuration during install
     VARIANT: "Server"
@@ -33,7 +34,7 @@ jobs:
                 recipe:
                     # !! Add your recipes here
                     - recipe.yml
-                    - recipe-cosmic.yml
+#                    - recipe-cosmic.yml # Cosmic doesn't have a build yet
 
         steps:
             # the build is fully handled by the reusable github action
@@ -67,7 +68,7 @@ jobs:
               id: upload
               uses: actions/upload-artifact@v4
               env:
-                  IMAGE_NAME: ${{ matrix.recipe == 'recipe-cosmic.yml' && 'cosmic-hachiman' || 'hachiman' }}              
+                  IMAGE_NAME: ${{ matrix.recipe == 'recipe-cosmic.yml' && 'cosmic-hachiman' || 'hachiman' }}
               with:
                   name: ${{ env.IMAGE_NAME }}-${{ env.IMAGE_TAG }}-${{ env.VERSION }}
                   path: |

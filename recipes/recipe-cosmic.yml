@@ -5,7 +5,7 @@ description: Experimental Cosmic Support
 
 # the base image to build on top of (FROM) and the version tag to use
 base-image: ghcr.io/ublue-os/cosmic-silverblue
-image-version: 40 # latest is also supported if you want new updates ASAP
+image-version: 41 # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
@@ -18,7 +18,6 @@ modules:
             destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
 
     - from-file: common/rpm-ostree/rpm-ostree.yml
-    - from-file: common/rpm-ostree/gnome-base.yml
 
     # Setup Cosmic Customizations if any
 
@@ -42,7 +41,7 @@ modules:
       system:
           enabled:
               # Framework AMD laptop requires PPD over TLP.
-              - power-profiles-daemon.service
+              - tuned-ppd.service
               - acpid.service
               - firewalld.service
           masked:

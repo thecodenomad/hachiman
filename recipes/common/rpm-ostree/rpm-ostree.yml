@@ -23,6 +23,7 @@ install:
     - libvirt
     - micro
     - nautilus-gsconnect
+    - nautilus-python
     - NetworkManager-openvpn
     - openvpn
     - p7zip

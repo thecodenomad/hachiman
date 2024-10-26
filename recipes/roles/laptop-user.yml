@@ -5,8 +5,30 @@ modules:
     - from-file: common/rpm-ostree/protonvpn.yml
     # Proton Mail
     - from-file: common/protonmail.yml
-# Customizations for main user
-# TODO:
-#   Chezmoi setup
-#   Setup fpread disable when lid is closed
-#   Add distrobox.ini for custom distroboxes
+    # Customizations for main user
+    # TODO:
+    #   Setup fpread disable when lid is closed
+    #   Add distrobox.ini for custom distroboxes
+
+    # Install Upstream RPMS
+    # TODO: Switch to homebrew? Ughhhh....
+    - type: rpm-ostree
+      install:
+          # Maintain dotfiles
+          - https://github.com/twpayne/chezmoi/releases/download/v2.52.4/chezmoi-2.52.4-x86_64.rpm
+
+    # Install Starship
+    - type: rpm-ostree
+      repos:
+          # when including COPR repos, use the %OS_VERSION% magic string
+          - https://copr.fedorainfracloud.org/coprs/atim/starship/repo/fedora-%OS_VERSION%/atim-starship-fedora-%OS_VERSION%.repo
+      install:
+          - starship
+
+    # Gnome Extensions
+    - type: gnome-extensions
+      install:
+          - Dash to Dock
+          - PaperWM
+          - spotify-tray
+          - Tailscale Status
