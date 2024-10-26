@@ -24,7 +24,7 @@ $git_status\
 # Palette Setup #
 #################
 
-palette = 'hachiman-alt'
+palette = 'hachiman'
 
 ##########################################################
 # Reference                                              #
@@ -33,29 +33,6 @@ palette = 'hachiman-alt'
 ##########################################################
 
 [palettes.hachiman]
-# Root User
-color_root_bg = "#e07473"
-color_root_fg = "#504b55"
-# First Pill - os/username
-color_p1_bg = "#e07473"
-color_p1_fg = "#504b55"
-# Second Pill - directory
-color_p2_fg = "#48484C"
-color_p2_bg = "#DB4C4C"
-# Third Pill - language
-color_p3_bg = "#894C4D"
-color_p3_fg = "#D2BBAD"
-# Fourth Pill - docker
-color_p4_bg = "#504b55"
-color_p4_fg = "#e07473"
-# Final Pill - git
-color_p5_fg = "#e07473"
-color_p5_bg = "#867474"
-# Prompt
-color_arrow = "#e07473"
-color_time = "#e07473"
-
-[palettes.hachiman-alt]
 # Root User
 color_root_bg = "#e07473"
 color_root_fg = "#504b55"
@@ -77,8 +54,7 @@ color_p5_bg = "#201C13"
 # Prompt
 #color_arrow = "#7B757C"
 #color_time = "#7B757C"
-#color_light_text = "#C4BCB7"
-color_light_text = "#DB4C4C"
+color_light_text = "#C4BCB7"
 color_arrow = "#DB4C4C"
 color_time = "#DB4C4C"
 
@@ -165,14 +141,18 @@ format = '[ $symbol( $version) ]($style)'
 # Pill 5 #
 ##########
 [git_branch]
-symbol = "🌱"
-style = "bg:color_p5_bg"
-format = '[[ $symbol $branch ](fg:color_p5_fg bg:color_p5_bg)]($style)'
+symbol = ""
+style = "fg:color_light_text bg:color_p5_bg"
+format = '[〘 $symbol $branch 〙]($style)'
 
 [git_status]
-modified = '🪖'
-style = "bg:color_p5_bg"
-format = '[[($all_status$ahead_behind) ](fg:color_p5_fg bg:color_p5_bg)]($style)'
+modified = ' 🚧 '
+ahead = '  '
+behind = '  '
+untracked = ' 󰘓 '
+stashed = ''
+style = "fg:color_light_text bg:color_p5_bg"
+format = '[($all_status$ahead_behind) ]($style)'
 
 ##########
 # Prompt #
