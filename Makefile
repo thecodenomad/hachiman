@@ -19,7 +19,7 @@ iso: build
 			IMAGE_NAME=hachiman \
 			IMAGE_TAG=${IMAGE_TAG} \
 			VARIANT=Server \
-			VERSION=40
+			VERSION=41
 	
 	# Change the permissions
 	echo "Change owner of iso to current user."

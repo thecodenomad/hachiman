@@ -7,9 +7,17 @@ on:
     push:
         paths-ignore: # don't rebuild if only documentation has changed
             - "**.md"
+            - "Makefile"
+            - "LICENSE"
+            - ".gitignore"
         branches:
             - main
     pull_request:
+        paths-ignore: # don't rebuild if only documentation has changed
+            - "**.md"
+            - "Makefile"
+            - "LICENSE"
+            - ".gitignore"
     workflow_dispatch: # allow manually triggering builds
 env:
     IMAGE_NAME: "hachiman"
@@ -34,7 +42,7 @@ jobs:
                 recipe:
                     # !! Add your recipes here
                     - recipe.yml
-#                    - recipe-cosmic.yml # Cosmic doesn't have a build yet
+        #                    - recipe-cosmic.yml # Cosmic doesn't have a build yet
 
         steps:
             # the build is fully handled by the reusable github action
