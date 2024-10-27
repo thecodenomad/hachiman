@@ -1,0 +1,18 @@
+type: rpm-ostree
+install:
+    - nautilus-python # Required for collision plugin
+remove:
+    # These will be installed via flatpak post install
+    - gnome-classic-session-xsession
+    - gnome-classic-session
+    - firefox
+    - firefox-langpacks
+    - gnome-software-rpm-ostree
+    - gnome-tour
+    - gnome-initial-setup
+    - gnome-system-monitor
+    - gnome-shell-extension-apps-menu
+    - gnome-shell-extension-launch-new-instance
+    - gnome-shell-extension-places-menu
+    - gnome-shell-extension-window-list
+    - gnome-shell-extension-background-logo
