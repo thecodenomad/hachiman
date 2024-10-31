@@ -59,7 +59,7 @@ jobs:
 
             # Build the ISO
             - name: Build ISO
-              uses: jasonn3/build-container-installer@v1.2.2
+              uses: jasonn3/build-container-installer@v1.2.3
               id: build
               env:
                   IMAGE_NAME: ${{ matrix.recipe == 'recipe-cosmic.yml' && 'cosmic-hachiman' || 'hachiman' }}
